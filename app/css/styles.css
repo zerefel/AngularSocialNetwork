@@ -1,0 +1,41 @@
+#submit-button {
+    margin-top: 20px;
+}
+
+#loginModal {
+    margin-top: 100px;
+}
+
+#gender-text {
+    font-size: 20px;
+}
+
+.ng-invalid {
+    border-color: red;
+    outline-color: red;
+}
+
+.ng-valid {
+    border-color: green;
+    outline-color: green;
+}
+
+.messages {
+    font-size: smaller;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    color: red;
+}
+
+
+ input.ng-invalid.ng-dirty {
+    border-bottom: 2px solid crimson;
+}
+
+input.ng-valid.ng-touched {
+    border-bottom: 2px solid #439a46;
+}
+
+.help-block {
+    color: crimson;
+}

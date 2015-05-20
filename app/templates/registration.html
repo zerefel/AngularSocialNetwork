@@ -2,56 +2,105 @@
 
 <div class="container">
     <div class="row  pad-top">
-        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <strong> Social Network Registration </strong>
+                    <h3> Facebokluk registration </h3>
                 </div>
                 <div class="panel-body">
-                    <form role="form">
+                    <form role="form" name="registrationForm" ng-controller="RegisterController" ng-submit="register()"
+                          novalidate>
                         <br/>
 
                         <div class="form-group input-group">
                             <span class="input-group-addon addon-icon"><i class="fa fa-circle-o-notch"></i></span>
-                            <input type="text" class="form-control" placeholder="Your Name"/>
+                            <input type="text" name="name" class="form-control" placeholder="Your Name"
+                                   ng-model="registrationInfo.name" required/>
                         </div>
-                        <div class="form-group input-group">
-                            <span class="addon-icon input-group-addon"><i class="fa fa-tag"></i></span>
-                            <input type="text" class="form-control" placeholder="Desired Username" required/>
-                        </div>
-                        <div class="form-group input-group">
-                            <span class="addon-icon input-group-addon">@</span>
-                            <input type="email" class="form-control" placeholder="Your Email" required/>
-                        </div>
-                        <div class="form-group input-group">
-                            <span class="addon-icon input-group-addon"><i class="fa fa-lock"></i></span>
-                            <input type="password" class="form-control" placeholder="Enter Password" required/>
-                        </div>
-                        <div class="form-group input-group">
-                            <span class="addon-icon input-group-addon"><i class="fa fa-lock"></i></span>
-                            <input type="password" class="form-control" placeholder="Retype Password" required/>
+                        <div class="help-block"
+                             ng-messages="registrationForm.name.$dirty && registrationForm.name.$error">
+                            <div ng-message="required">Your name is required.</div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-3">Gender:</div>
-                            <div class="col-sm-9">
-                                <div class="btn-group" data-toggle="buttons">
+
+                        <div class="form-group input-group">
+                            <span class="addon-icon input-group-addon"><i class="fa fa-tag"></i></span>
+                            <input type="text" name="username" class="form-control" placeholder="Desired Username"
+                                   ng-model="registrationInfo.username" required/>
+                        </div>
+                        <div class="help-block"
+                             ng-messages="registrationForm.username.$dirty && registrationForm.username.$error">
+                            <div ng-message="required">A username is required.</div>
+                        </div>
+
+
+                        <div class="form-group input-group">
+                            <span class="addon-icon input-group-addon">@</span>
+                            <input type="email" name="email" class="form-control" placeholder="Your Email"
+                                   ng-model="registrationInfo.email" required/>
+                        </div>
+                        <div class="help-block"
+                             ng-messages="registrationForm.email.$dirty && registrationForm.email.$error">
+                            <div ng-message="email">Whoops, your email appears invalid.</div>
+                            <div ng-message="required">Your email is required.</div>
+                        </div>
+
+
+                        <div class="form-group input-group">
+                            <span class="addon-icon input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input type="password" name="password" class="form-control" placeholder="Enter Password"
+                                   ng-minlength="6" ng-maxlength="100" ng-model="registrationInfo.password" required/>
+                        </div>
+                        <div class="help-block"
+                             ng-messages="registrationForm.password.$dirty && registrationForm.password.$error">
+                            <div ng-message="minlength">Your password must be at least 6 characters long.</div>
+                            <div ng-message="required">A password is required to keep you safe.</div>
+                            <div ng-message="maxlength">Achievement unlocked - one time password!</div>
+
+                        </div>
+
+
+                        <div class="form-group input-group">
+                            <span class="addon-icon input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input type="password" name="confirmPassword" class="form-control"
+                                   placeholder="Confirm Password"
+                                   ng-model="registrationInfo.confirmPassword"
+                                   required compare-to="registrationInfo.password"/>
+                        </div>
+                        <div class="help-block"
+                             ng-messages="registrationForm.confirmPassword.$dirty && registrationForm.confirmPassword.$error">
+                            <div ng-message="minlength">Your password must be at least 6 characters long.</div>
+                            <div ng-message="required">We require this to ensure your passwords match.</div>
+                            <div ng-message="compareTo">Your passwords don't seem to match.</div>
+                        </div>
+
+
+                        <div class="row form-group">
+                            <div class="col-sm-9 col-md-12">
+                                <div class="col-sm-5 col-md-4 col-md-offset-1" id="gender-text">Your Gender:</div>
+                                <div class="btn-group col-md-6" data-toggle="buttons">
                                     <label class="btn btn-default">
-                                        <input type="radio" id="q156" name="gender" value="Male"/> Male
+                                        <input type="radio" name="gender" value="1" ng-model="registrationInfo.gender"/>
+                                        Male
                                     </label>
                                     <label class="btn btn-default">
-                                        <input type="radio" id="q157" name="gender" value="Female"/> Female
+                                        <input type="radio" name="gender" value="2" ng-model="registrationInfo.gender"/>
+                                        Female
                                     </label>
                                     <label class="btn btn-default">
-                                        <input type="radio" id="q158" name="gender" value="Other"/> Other
+                                        <input type="radio" name="gender" value="0" ng-model="registrationInfo.gender"/>
+                                        Other
                                     </label>
                                 </div>
                             </div>
                         </div>
 
-                        <a href="#" class="btn btn-success ">Register Me</a>
+                        <button ng-disabled="registrationForm.$invalid" id="submit-button" type="submit"
+                                class="btn btn-success btn-lg btn-block">Register Me
+                        </button>
+
                         <hr/>
-                        Already registered? <a href="#/login">Login here</a>
+                        <span>Already registered? <a href="#/login">Login</a></span>
                     </form>
                 </div>
 
@@ -59,3 +108,16 @@
         </div>
     </div>
 </div>
+<!--Used to change the radio button state to active-->
+<script>
+    $(document).ready(function () {
+        addActiveClassRadio();
+
+        function addActiveClassRadio() {
+            $('input[name=gender]').on('click', function () {
+                $(this).parent().addClass('active');
+                $(this).parent().siblings().removeClass('active');
+            });
+        }
+    });
+</script>
