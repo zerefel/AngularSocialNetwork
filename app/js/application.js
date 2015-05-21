@@ -24,6 +24,13 @@ SocialNetwork.config(function ($routeProvider) {
             templateUrl: 'templates/user-home.html',
             controller: 'MainController'
         })
+        .when('/user/:username', {
+            title: function (params) {
+                return params.username
+            },
+            templateUrl: 'templates/user-wall.html',
+            controller: 'MainController'
+        })
         .otherwise({
             redirectTo: '/'
         });
@@ -35,20 +42,20 @@ SocialNetwork.directive('compareTo', [function () {
         scope: {
             otherModelValue: "=compareTo"
         },
-        link: function(scope, element, attributes, ngModel) {
+        link: function (scope, element, attributes, ngModel) {
 
-            ngModel.$validators.compareTo = function(modelValue) {
+            ngModel.$validators.compareTo = function (modelValue) {
                 return modelValue == scope.otherModelValue;
             };
 
-            scope.$watch("otherModelValue", function() {
+            scope.$watch("otherModelValue", function () {
                 ngModel.$validate();
             });
         }
     };
 }]);
 
-SocialNetwork.run(['$location', '$rootScope', function($location, $rootScope) {
+SocialNetwork.run(['$location', '$rootScope', function ($location, $rootScope) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
     });

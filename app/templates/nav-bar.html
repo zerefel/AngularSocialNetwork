@@ -14,22 +14,36 @@
         </div>
 
         <div  class="navbar-collapse collapse" ng-if="!username">
-            <div ng-if="username">Username is here!</div>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#/login">Login</a></li>
                 <li><a href="#/register">Register</a></li>
             </ul>
         </div>
         <div  class="navbar-collapse collapse" ng-controller="AuthenticationsController" ng-if="username">
-            <input type="text" ng-keydown="" ->
+            <div id="search-div" class="col-md-6" ng-controller="ProfilesController">
+                <input type="text" class="col-md-8" id="search-box" ng-model="searchUserName" ng-keyup="searchUserByName()" placeholder="Search Facebokluk">
+            </div>
+
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/user/:username">Profile</a></li>
-                <li><a href="#/user/:username/friends">Friends</a></li>
-                <li><a href="#/user/:username/edit">Edit Profile</a></li>
-                <li><a href="#/" ng-click="logout()">Logout</a></li>
+                <li><a ng-href="#/user/{{ username }}" class="ng-cloak">{{ username }}</a></li>
+                <li><a ng-href="#/user/{{ username }}/friends">Friend requests</a></li>
+                <li><a ng-href="#/user/{{ username }}/edit">Edit Profile</a></li>
+                <li><a ng-href="#/" ng-click="logout()">Logout</a></li>
             </ul>
         </div>
 
     </div>
 
 </nav>
+
+
+<div id="search-results-data" class="col-md-offset-3" ng-if="true">
+    <ul>
+        <li ng-repeat="result in searchResults">
+            <img src="{{result.profileImageData}}" class="search-images" onError="this.onerror=null; this.src='./images/no-avatar.jpg';"/>
+            <div class="search-names">
+                <a class="search-hrefs" href="#/user/{{result.username}}" data-id="{{result.username}}">{{result.name}}</a>
+            </div>
+        </li>
+    </ul>
+</div>

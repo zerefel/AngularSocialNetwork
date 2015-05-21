@@ -1,39 +1,110 @@
-'use strict';
+SocialNetwork.factory('profilesService', function ($http, baseUrl, authenticationService) {
+    var service = {};
 
-Advertisements.factory('mainData', function ($http, baseServiceUrl) {
-    var data = {};
+    var serviceUrl = baseUrl;
 
-    data.params = {};
-
-    data.getAllAdds = function (success, error) {
-        $http.get(baseServiceUrl + '/ads', {params: this.params})
-            .success(function (data) {
-                success(data)
-            }).error(error);
+    service.getUsersByName = function (searchName, success, error) {
+        $http.get(serviceUrl + '/users/search?searchTerm=' + searchName,
+            {headers: authenticationService.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
     };
 
-    data.getAllTowns = function (success, error) {
-        $http.get(baseServiceUrl + '/towns')
-            .success(function (data) {
-                success(data)
-            }).error(error);
+
+    service.newPost = function (user, content, success, error) {
+        $http.post(serviceUrl + '/posts',
+            {'postContent': content, 'username': user},
+            {headers: authenticationService.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
     };
 
-    data.getAllCategories = function (success, error) {
-        $http.get(baseServiceUrl + '/categories')
-            .success(function (data) {
-                success(data)
-            }).error(error);
+    service.getFriendRequests = function (success, error) {
+        $http.get(serviceUrl + '/me/requests',
+            {headers: authenticationService.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
     };
 
-    data.clearParams = function () {
-        data.params.categoryId = null;
-        data.params.townId = null;
-        data.params.startPage = 1;
+    service.sendFriendRequest = function (username, success, error) {
+        $http.post(serviceUrl + '/me/requests/' + username, {},
+            {headers: authenticationService.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
     };
 
-    data.clearParams();
-    data.params.pageSize = 5;
+    service.acceptFriendRequest = function (id, success, error) {
+        $http.put(serviceUrl + '/me/requests/' + id + '?status=approved', {},
+            {headers: authenticationService.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
+    };
 
-    return data;
+    service.rejectFriendRequest = function (id, success, error) {
+        $http.put(serviceUrl + '/me/requests/' + id + '?status=delete', {},
+            {headers: tauthenticationService.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
+    };
+
+    service.getOwnFriendsPreview = function (success, error) {
+        $http.get(serviceUrl + '/me/friends/preview', {
+            headers: authenticationService.GetHeaders()
+        })
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
+    };
+
+    service.getOwnFriendsDetails = function (success, error) {
+        $http.get(serviceUrl + '/me/friends',
+            {headers: authenticationService.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
+    };
+
+    service.getUserFriendsPreview = function (user, success, error) {
+        $http.get(serviceUrl + '/users/' + user + '/friends/preview',
+            {headers: authenticationService.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
+    };
+
+    service.getUserFriendsDetails = function (user, success, error) {
+        $http.get(serviceUrl + '/users/' + user + '/friends',
+            {headers: authenticationService.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
+    };
+
+    return service;
 });
