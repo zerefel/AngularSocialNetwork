@@ -40,11 +40,11 @@ SocialNetwork.factory('authenticationService', function ($http, baseUrl) {
 
     service.SetCredentials = function (serverData) {
         sessionStorage['accessToken'] = serverData.access_token;
-        sessionStorage['userName'] = serverData.userName;
+        sessionStorage['username'] = serverData.userName;
     };
 
     service.GetUsername = function () {
-        return sessionStorage['userName'];
+        return sessionStorage['username'];
     };
 
     service.ClearCredentials = function () {

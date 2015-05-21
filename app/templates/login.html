@@ -1,16 +1,14 @@
 <div ng-include="'templates/nav-bar.html'"></div>
-
-<section id="container">
     <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 class="text-center">Login to Facebokluk&#8482;</h3>
+                    <a href="#/"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button></a>
+                    <h3 class="text-center">Sign in to Facebokluk&#8482;</h3>
                 </div>
                 <div class="modal-body">
 
-                    <form class="form col-md-12 center-block" name="loginForm" ng-controller="LoginController"
+                    <form class="form col-md-12 center-block" name="loginForm" ng-controller="AuthenticationsController"
                           ng-submit="login()" novalidate>
                         <div class="form-group">
                             <input type="text" name="username" class="form-control input-lg" placeholder="Username"
@@ -46,4 +44,3 @@
             </div>
         </div>
     </div>
-</section>

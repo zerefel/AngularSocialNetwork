@@ -1,3 +1,37 @@
-<section id="container">
+<div ng-include="'templates/nav-bar.html'"></div>
 
+<section id="container" class="row col-md-8 col-md-offset-2">
+    <div class="col-md-4 pull-left" id="friends-box">
+        <h4>Friends - number total</h4>
+        <table>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-8 pull-right" id="news-feed">
+        <h2 class="text-center">News feed</h2>
+        <ul>
+            <li class="post-item">
+                <article>
+                    <header>
+                        <h4>Name {{ name }}</h4>
+                    </header>
+                    <section>
+                        <p> Some shitty post{{ post }}</p>
+                    </section>
+                </article>
+            </li>
+        </ul>
+    </div>
 </section>

@@ -4,13 +4,25 @@ SocialNetwork.constant('baseUrl', 'http://softuni-social-network.azurewebsites.n
 
 SocialNetwork.config(function ($routeProvider) {
     $routeProvider
+        .when('/', {
+            title: 'Welcome',
+            templateUrl: 'templates/welcome.html',
+            controller: 'MainController'
+        })
         .when('/login', {
             title: 'Login',
-            templateUrl: 'templates/login.html'
+            templateUrl: 'templates/login.html',
+            controller: 'MainController'
         })
         .when('/register', {
             title: 'Register',
-            templateUrl: 'templates/registration.html'
+            templateUrl: 'templates/registration.html',
+            controller: 'MainController'
+        })
+        .when('/user/home', {
+            title: 'Home',
+            templateUrl: 'templates/user-home.html',
+            controller: 'MainController'
         })
         .otherwise({
             redirectTo: '/'

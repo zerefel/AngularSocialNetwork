@@ -5,7 +5,7 @@ SocialNetwork.factory('notificationService',
                 noty({
                         text: msg,
                         type: 'success',
-                        layout: 'topCenter',
+                        layout: 'bottomCenter',
                         timeout: 1000}
                 );
             },
@@ -32,7 +32,7 @@ SocialNetwork.factory('notificationService',
                 noty({
                         text: msg,
                         type: 'error',
-                        layout: 'topCenter',
+                        layout: 'bottomCenter',
                         timeout: 5000}
                 );
             }
