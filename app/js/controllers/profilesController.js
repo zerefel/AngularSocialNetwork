@@ -1,4 +1,4 @@
-SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, profilesService, notificationService, authenticationService, $route, $routeParams) {
+SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, profilesService, $location, notificationService, authenticationService, $route, $routeParams) {
 
     $scope.setCurrentUser = function () {
         $scope.currentUser = $routeParams.id;
@@ -13,6 +13,16 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
         });
     };
 
+    $scope.editProfile = function() {
+        authenticationService.EditUserProfile($scope.userData, function (serverData) {
+            $location('/user/home');
+            notificationService.showInfo("Successfully edited profile!");
+        }, function (errorMessage) {
+            notificationService.showError("Error editing profile.");
+        });
+    };
+
+
     $scope.searchUserByName = function () {
         if($scope.searchUserName) {
             profilesService.getUsersByName($scope.searchUserName, function (serverData) {
@@ -22,7 +32,6 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
             });
         }
     };
-
 
     $scope.setCurrentName = function () {
         authenticationService.getUserFullData($routeParams.id, function (serverData) {

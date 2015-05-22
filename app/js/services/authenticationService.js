@@ -25,7 +25,7 @@ SocialNetwork.factory('authenticationService', function ($http, baseUrl) {
     };
 
     service.EditUserProfile = function (editUserData, success, error) {
-        $http.put(serviceUrl + '/profile', editUserData, {headers: this.GetHeaders()})
+        $http.put(baseUrl + '/me', editUserData, {headers: this.GetHeaders()})
             .success(function (data) {
                 success(data)
             }).error(error);

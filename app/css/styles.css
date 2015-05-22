@@ -22,10 +22,6 @@ input.ng-valid.ng-touched {
     color: crimson;
 }
 
-#container {
-    border: 1px solid gray;
-}
-
 .post-item {
     border: 1px solid black;
 }
@@ -91,7 +87,8 @@ td {
 }
 
 .picture-preview {
-    width: 200px;
+    width: 250px;
+    height: 150px;
 }
 
 input[type="file"] {
@@ -100,4 +97,13 @@ input[type="file"] {
 
 .file-upload-icons {
     padding-right: 10px;
+}
+
+.upload-label {
+    margin-left: 20px;
+}
+
+.picture-upload p {
+    margin-left: 20px;
+    margin-bottom: 0;
 }

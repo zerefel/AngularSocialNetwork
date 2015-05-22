@@ -42,8 +42,4 @@ SocialNetwork.controller('AuthenticationsController', function ($scope, $rootSco
                 notificationService.showError("Registration failed!", serverError)
             });
     };
-
-    $scope.editProfile = function() {
-
-    }
 });

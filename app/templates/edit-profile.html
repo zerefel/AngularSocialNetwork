@@ -56,26 +56,27 @@
                     <div class="form-group control-label">
                         <img class="picture-preview" id="profilePictureData" src="{{ userData.profileImageData }}"/>
                     </div>
-                    <label for="file-upload" class="btn btn-info">
+                    <label for="file-upload" class="upload-label btn btn-info">
                         <i class="file-upload-icons fa fa-cloud-upload"></i>Upload Picture
                     </label>
-                    <input id="file-upload" ng-file-select="onFileSelect($files, 'profile')" type="file"/>
+                    <input id="file-upload" ng-file-select="onFileSelect($files)" type="file"/>
 
+                    <p>Allowed format: .jpg</p>
                     <p>Size limit: 128KB</p>
                 </div>
 
-                <div class="col-md-3 form-group" ng-controller="UploadCoverController">
+                <div class="col-md-2 col-md-offset-1 picture-upload pull-left" ng-controller="UploadCoverController">
                     <p>Cover Picture:</p>
 
                     <div class="form-group control-label">
-                        <img class="picture-preview" src="{{ userData.coverImageData }}"/>
+                        <img class="picture-preview"  src="{{ userData.coverImageData }}"/>
                     </div>
-                    <label for="file-upload" class="btn btn-info">
+                    <label for="cover-upload" class="upload-label btn btn-info">
                         <i class="file-upload-icons fa fa-cloud-upload"></i>Upload Picture
                     </label>
-                    <input ng-file-select="onFileSelect($files)" type="file"/>
+                    <input id="cover-upload" ng-file-select="onFileSelect($files)" type="file"/>
 
-                    <p>Size limit: 1028KB</p>
+                    <p>Size limit: 1024KB</p>
                 </div>
 
             </section>
