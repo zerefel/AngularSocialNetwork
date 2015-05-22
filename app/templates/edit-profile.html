@@ -2,8 +2,9 @@
 
 <section id="container" class="row col-md-8 col-md-offset-2" ng-controller="ProfilesController" ng-init="getUserData()">
     <div class="col-md-12">
-        <form class="col-md-6" name="editProfileForm" novalidate ng-submit="editProfile()">
-            <section id="user-info-section">
+        <form name="editProfileForm" novalidate ng-submit="editProfile()">
+            <section id="user-info-section" class="col-lg-6">
+
                 <div class="form-group input-group">
                     <span class="input-group-addon addon-icon"><i class="fa fa-circle-o-notch"></i></span>
                     <input type="text" name="name" class="form-control" placeholder="Your Name"
@@ -47,41 +48,43 @@
                 </div>
             </section>
 
+            <section>
+
+                <div class="col-md-2 picture-upload pull-left" ng-controller="UploadController">
+                    <p>Profile Picture:</p>
+
+                    <div class="form-group control-label">
+                        <img class="picture-preview" id="profilePictureData" src="{{ userData.profileImageData }}"/>
+                    </div>
+                    <label for="file-upload" class="btn btn-info">
+                        <i class="file-upload-icons fa fa-cloud-upload"></i>Upload Picture
+                    </label>
+                    <input id="file-upload" ng-file-select="onFileSelect($files, 'profile')" type="file"/>
+
+                    <p>Size limit: 128KB</p>
+                </div>
+
+                <div class="col-md-3 form-group" ng-controller="UploadCoverController">
+                    <p>Cover Picture:</p>
+
+                    <div class="form-group control-label">
+                        <img class="picture-preview" src="{{ userData.coverImageData }}"/>
+                    </div>
+                    <label for="file-upload" class="btn btn-info">
+                        <i class="file-upload-icons fa fa-cloud-upload"></i>Upload Picture
+                    </label>
+                    <input ng-file-select="onFileSelect($files)" type="file"/>
+
+                    <p>Size limit: 1028KB</p>
+                </div>
+
+            </section>
+
+
             <button ng-disabled="editProfileForm.$invalid" id="submit-button" type="submit"
                     class="btn btn-success btn-lg btn-block col-md-2">Save Changes
             </button>
         </form>
-
-        <div class="col-md-3 picture-upload" ng-controller="UploadController">
-            <p>Profile Picture:</p>
-
-            <div class="form-group control-label">
-                <img class="picture-preview" id="profilePictureData" src="{{ userData.profileImageData }}"/>
-            </div>
-            <label for="file-upload" class="btn btn-info">
-                <i class="file-upload-icons fa fa-cloud-upload"></i>Upload Picture
-            </label>
-            <input id="file-upload" ng-file-select="onFileSelect($files, 'profile')" type="file"/>
-
-            <p>Size limit: 128KB</p>
-        </div>
-
-        <div class="form-group" ng-controller="UploadCoverController">
-            <label class="control-label">Cover Image:</label>
-
-            <div class="col-md-3 picture-upload">
-                <div class="form-group">
-                    <img class="picture-preview" id="coverPictureData" src="{{ userData.coverImageData  }}"/>
-                </div>
-                <label for="cover-file-upload" class="btn btn-info">
-                    <i class="file-upload-icons fa fa-cloud-upload"></i>Upload Picture
-                </label>
-                <input id="cover-file-upload" ng-file-select="onFileSelect($files)" type="file"/>
-
-                <p>Size limit: 1028KB</p>
-            </div>
-        </div>
-
     </div>
 </section>
 
