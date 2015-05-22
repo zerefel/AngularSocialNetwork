@@ -1,7 +1,7 @@
 /**
  * Created by ZerefeL on 21/05/15.
  */
-SocialNetwork.controller('PostsController', function($scope, postsService, $routeParams, notificationService) {
+SocialNetwork.controller('PostsController', function($scope, postsService, $route, $routeParams, notificationService) {
 
     $scope.getNewsFeed = function () {
         postsService.getNewsFeed(function (serverData) {
@@ -79,18 +79,13 @@ SocialNetwork.controller('PostsController', function($scope, postsService, $rout
 
     $scope.submitPost = function () {
         var user = $routeParams.username;
-        var content = $('#postTextArea').val();
-        if (!content) {
-            // poppy.pop('error', 'Error', 'The post content cannot be empty');
-            return;
-        }
+        var content = $scope.postContent;
 
         postsService.newPost(user, content, function (serverData) {
             $route.reload();
-            $route.reload();
-
+            notificationService.showInfo("Posted successfully!");
         }, function (error) {
-            // poppy.pop('error', 'Error', 'An error occured when trying to submit the post');
+            notificationService.showError('There was an error submitting this post. ' + error.message)
         });
     };
 
@@ -118,18 +113,27 @@ SocialNetwork.controller('PostsController', function($scope, postsService, $rout
     $scope.deletePost = function(id) {
         postsService.deletePost(id, function(serverData) {
             $route.reload();
-            poppy.pop('success', 'Success', 'The post has been deleted successfully');
+            notificationService.showInfo("Successfully deleted post.");
         }, function(error) {
-            poppy.pop('error', 'Error', 'An error occured when trying to delete the post');
+            notificationService.showError("Error deleting post. " + error.message);
+        });
+    };
+
+    $scope.editPost = function (postId, commentId) {
+        postsService.editPost(postId, commentId, function (serverData) {
+            $route.reload();
+            notificationService.showInfo("Successfully edited post.");
+        }, function (error) {
+            notificationService.showError("Error editing post. " + error.message);
         });
     };
 
     $scope.deleteComment = function (postId, commentId) {
         postsService.deleteComment(postId, commentId, function (serverData) {
             $route.reload();
-            poppy.pop('success', 'Success', 'The comment has been deleted successfully');
+            notificationService.showInfo("Successfully deleted comment.");
         }, function (error) {
-            poppy.pop('error', 'Error', 'An error occured when trying to delete the comment');
+            notificationService.showError("Error deleting comment. " + error.message);
         });
     };
 
@@ -142,22 +146,22 @@ SocialNetwork.controller('PostsController', function($scope, postsService, $rout
     };
 
     $scope.isDeletablePost = function(post) {
-        if (post.author.username === localStorage['username'] ||
-            post.wallOwner.username === localStorage['username']) {
+        if (post.author.username === sessionStorage['username'] ||
+            post.wallOwner.username === sessionStorage['username']) {
             return true;
         }
         return false;
     };
 
     $scope.isDeletableComment = function(commentAuthor, postAuthor) {
-        return commentAuthor.username === localStorage['username'] ||
-            postAuthor.username === localStorage['username'];
+        return commentAuthor.username === sessionStorage['username'] ||
+            postAuthor.username === sessionStorage['username'];
     };
 
     $scope.isPostOwnerOrAuthorFriend = function(post) {
         return post.author.isFriend || post.wallOwner.isFriend ||
-            (post.author.username === localStorage['username']) ||
-            (post.wallOwner.username === localStorage['username']);
+            (post.author.username === sessionStorage['username']) ||
+            (post.wallOwner.username === sessionStorage['username']);
     };
 
     $scope.exceededCommentsCount = function(length) {

@@ -34,8 +34,18 @@ SocialNetwork.factory('postsService', function ($http, baseUrl, authenticationSe
             });
     };
 
+    service.deletePost = function (postId, success, error) {
+        $http.delete(serviceUrl + '/posts/' + postId,
+            { headers: authenticationService.GetHeaders() })
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
+    };
+
     service.likePost = function (id, success, error) {
-        $http.post(serviceUrl + '/Posts/' + id + '/likes', {},
+        $http.post(serviceUrl + '/posts/' + id + '/likes', {},
             {headers: authenticationService.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data);
@@ -45,7 +55,7 @@ SocialNetwork.factory('postsService', function ($http, baseUrl, authenticationSe
     };
 
     service.unlikePost = function (id, success, error) {
-        $http.delete(serviceUrl + '/Posts/' + id + '/likes',
+        $http.delete(serviceUrl + '/posts/' + id + '/likes',
             {headers: authenticationService.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data);
@@ -77,6 +87,16 @@ SocialNetwork.factory('postsService', function ($http, baseUrl, authenticationSe
     service.commentPost = function (postId, content, success, error) {
         $http.post(serviceUrl + '/posts/' + postId + '/comments',
             {'commentContent': content},
+            {headers: authenticationService.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
+    };
+
+    service.editPost = function (postId, content, success, error) {
+        $http.put(serviceUrl + '/posts/' + postId,
             {headers: authenticationService.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data);

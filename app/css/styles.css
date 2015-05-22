@@ -100,11 +100,11 @@ input[type="file"] {
 }
 
 .upload-label {
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 .picture-upload p {
-    margin-left: 20px;
+    margin-left: 40px;
     margin-bottom: 0;
 }
 #submit-password-button {
@@ -122,4 +122,36 @@ input[type="file"] {
     margin-top: -30px;
     margin: 0;
     padding: 0;
+}
+
+#post-text-area{
+    width: 98%;
+    resize: none;
+    height: 50px;
+    border: 1px solid grey;
+    margin: 10px;
+}
+
+#post-container {
+    height: 120px;
+}
+
+.wall-owner-name {
+    color: white;
+    text-shadow: 2px -2px black;
+}
+
+.post-list-element {
+    margin-left: 0;
+    border: 1px solid ghostwhite;
+    margin-bottom: 20px;
+}
+
+body {
+    background-image: url('../images/background.jpg');
+    z-index: -10;
+}
+
+form {
+    background-color: white;
 }

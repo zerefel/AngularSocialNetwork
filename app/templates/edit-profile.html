@@ -3,7 +3,7 @@
 <section id="container" class="row col-md-8 col-md-offset-2" ng-controller="ProfilesController" ng-init="getUserData()">
     <div class="col-md-12">
         <form name="editProfileForm" novalidate ng-submit="editProfile()">
-            <section id="user-info-section" class="col-lg-6">
+            <section id="user-info-section" class="col-lg-6" style="background-color: white;">
 
                 <div class="form-group input-group">
                     <span class="input-group-addon addon-icon"><i class="fa fa-circle-o-notch"></i></span>
@@ -91,7 +91,7 @@
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <section class="row col-md-6 col-md-offset-3">
-        <form style="border: 1px solid black;" name="passwordForm" ng-controller="AuthenticationsController" ng-submit="changePassword()">
+        <form style="border: 1px solid black;" name="passwordForm" ng-controller="AuthenticationsController" ng-submit="changePassword()" >
             <div class="form-group input-group">
                 <span class="addon-icon input-group-addon"><i class="fa fa-lock"></i></span>
                 <input type="password" name="oldPassword" class="form-control" placeholder="Old password"

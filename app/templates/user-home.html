@@ -27,9 +27,9 @@
                 <img src="{{post.author.profileImageData}}" class="smallThumbnail" alt=""/>
 
                 <div style="display: inline;">
-                    <a href="#/User/{{post.author.username}}" class="userName" data-id="{{post.author.username}}">{{post.author.name}}</a>
+                    <a href="#/user/{{post.author.username}}" class="userName" data-id="{{post.author.username}}">{{post.author.name}}</a>
                     posted on
-                    <a href="#/User/{{post.wallOwner.username}}" class="userName" data-id="{{post.wallOwner.username}}">{{
+                    <a href="#/user/{{post.wallOwner.username}}" class="userName" data-id="{{post.wallOwner.username}}">{{
                         post.wallOwner.name}}</a>'s wall
                 </div>
                 <br/>
@@ -66,9 +66,9 @@
                             <div class="commentContent btn-primary">{{ comment.commentContent }}</div>
                             <div style="text-align: right;">
                                 {{comment.likesCount}}
-                                <span class="likeButton btn-success" ng-if="!comment.liked"
+                                <span class="likeButton btn btn-success" ng-if="!comment.liked"
                                       ng-click="likeComment(post.id, comment.id)">Like</span>
-                                <span class="likeButton btn-danger" ng-if="comment.liked"
+                                <span class="likeButton btn btn-danger" ng-if="comment.liked"
                                       ng-click="unlikeComment(post.id, comment.id)">Unlike</span>
                             </div>
                         </li>

@@ -30,7 +30,7 @@ SocialNetwork.controller('AuthenticationsController', function ($scope, $rootSco
         ClearData();
         $rootScope.isLoggedIn = false;
         authenticationService.ClearCredentials();
-        //mainData.clearParams();
+        $localStorage.clear();
         $route.reload();
     };
 
@@ -42,7 +42,7 @@ SocialNetwork.controller('AuthenticationsController', function ($scope, $rootSco
                 ClearData();
                 $location.path('/user/home');
             }, function (serverError) {
-                notificationService.showError("Registration failed!", serverError)
+                notificationService.showError("Registration failed!", serverError.message)
             });
     };
 

@@ -33,13 +33,13 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
             profilesService.getUsersByName($scope.searchUserName, function (serverData) {
                 $rootScope.searchResults = serverData;
             }, function (error) {
-                notificationService.showError("Error loading users.")
+                notificationService.showError("Error loading users. " + error.message)
             });
         }
     };
 
     $scope.setCurrentName = function () {
-        authenticationService.GetUserProfileData($routeParams.id, function (serverData) {
+        authenticationService.GetUserProfileData($routeParams.username, function (serverData) {
             $scope.currentName = serverData.name;
         }, function (error) {
 
@@ -62,21 +62,19 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
         });
     };
 
-
-
     $scope.acceptFriendRequest = function (id) {
         profilesService.acceptFriendRequest(id, function (successData) {
-            $scope.navigateToPage('Request accepted successfully', '#/FriendRequests');
+            notificationService('Friend request accepted!');
         }, function (error) {
-            //  poppy.pop('error', 'Error', 'There was an error approving the request');
+            notificationService.showError('Error accepting friend request.' + error.message);
         });
     };
 
     $scope.rejectFriendRequest = function (id) {
         profilesService.rejectFriendRequest(id, function (successData) {
-            $scope.navigateToPage('Request rejected successfully', '#/FriendRequests');
+            notificationService('Friend request rejected!');
         }, function (error) {
-            // poppy.pop('error', 'Error', 'There was an error rejecting the request');
+            notificationService.showError('Error rejecting friend request.' + error.message);
         });
     };
 
@@ -96,19 +94,19 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
         profilesService.getUserFriendsPreview($routeParams.id, function (serverData) {
             $scope.ownFriendsPreview = serverData;
         }, function (error) {
-            // poppy.pop('error', 'Error', 'There was an error getting the friends preview');
+           notificationService.showError("Error getting friends preview. " + error.message);
         });
     };
 
     $scope.getWallOwnerFriendsDetails = function () {
-        if ($routeParams.id === localStorage['username']) {
+        if ($routeParams.username == sessionStorage['username']) {
             $scope.getFriendsDetails();
             return;
         }
-        profilesService.getUserFriendsDetails($routeParams.id, function (serverData) {
+        this.getUserFriendsDetails($routeParams.username, function (serverData) {
             $scope.friendsDetails = serverData;
         }, function (error) {
-            //poppy.pop('error', 'Error', 'There was an error getting the friends details');
+            notificationService.showError('Error getting friends details. ' + error.messsage);
         });
     };
 
@@ -116,7 +114,7 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
         profilesService.getOwnFriendsDetails(function (serverData) {
             $scope.friendsDetails = serverData;
         }, function (error) {
-            // poppy.pop('error', 'Error', 'There was an error getting the friends details');
+            notificationService.showError('Error getting friends details. ' + error.messsage);
         });
     };
 });
