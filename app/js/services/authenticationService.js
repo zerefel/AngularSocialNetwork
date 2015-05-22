@@ -32,15 +32,29 @@ SocialNetwork.factory('authenticationService', function ($http, baseUrl) {
     };
 
     service.ChangePassword = function (passwordData, success, error) {
-        $http.put(serviceUrl + '/ChangePassword', passwordData, {headers: this.GetHeaders()})
+        $http.put(baseUrl + '/me/ChangePassword', passwordData, {headers: this.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success()
             }).error(error);
     };
 
+    service.GetProfileDataForSpecificUser = function (username, success, error) {
+        $http.get(serviceUrl + '/' + username,
+            {headers: this.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
+    };
+
     service.SetCredentials = function (serverData) {
         sessionStorage['accessToken'] = serverData.access_token;
         sessionStorage['username'] = serverData.userName;
+    };
+
+    service.setProfilePicture = function (profilePicture) {
+        sessionStorage['profilePicture'] = profilePicture;
     };
 
     service.GetUsername = function () {
@@ -51,7 +65,7 @@ SocialNetwork.factory('authenticationService', function ($http, baseUrl) {
         sessionStorage.clear();
     };
 
-    service.GetHeaders = function() {
+    service.GetHeaders = function () {
         return {
             Authorization: "Bearer " + sessionStorage['accessToken']
         };

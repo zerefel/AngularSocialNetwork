@@ -14,16 +14,7 @@ SocialNetwork.factory('profilesService', function ($http, baseUrl, authenticatio
     };
 
 
-    service.newPost = function (user, content, success, error) {
-        $http.post(serviceUrl + '/posts',
-            {'postContent': content, 'username': user},
-            {headers: authenticationService.GetHeaders()})
-            .success(function (data, status, headers, config) {
-                success(data);
-            }).error(function (data) {
-                error(data);
-            });
-    };
+
 
     service.getFriendRequests = function (success, error) {
         $http.get(serviceUrl + '/me/requests',

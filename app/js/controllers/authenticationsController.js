@@ -1,8 +1,8 @@
-SocialNetwork.controller('AuthenticationsController', function ($scope, $rootScope, $location, $route, authenticationService, notificationService) {
+SocialNetwork.controller('AuthenticationsController', function ($scope, $rootScope, $location, $route, authenticationService, notificationService, $localStorage) {
 
     var ClearData = function () {
-        $scope.loginData = "";
-        $scope.registerData = "";
+        $scope.loginInfo = "";
+        $scope.registrationInfo = "";
         $scope.userData = "";
         $scope.passwordData = "";
     };
@@ -12,11 +12,15 @@ SocialNetwork.controller('AuthenticationsController', function ($scope, $rootSco
             function (serverData) {
                 notificationService.showInfo("Successfully signed in!");
                 authenticationService.SetCredentials(serverData);
-                $location.path('/user/home');
-                $rootScope.isLoggedIn = true;
-                ClearData();
-            },
-            function (serverError) {
+
+                authenticationService.GetUserProfileData(function (successData) {
+                    authenticationService.setProfilePicture(successData.profileImageData);
+                    $location.path('/user/home');
+                    $rootScope.userProfileData = successData;
+                    $localStorage.userProfileData = successData;
+                    ClearData();
+                });
+            }, function (serverError) {
                 notificationService.showError("Sign in failed!", serverError)
             });
     };
@@ -37,9 +41,18 @@ SocialNetwork.controller('AuthenticationsController', function ($scope, $rootSco
                 authenticationService.SetCredentials(serverData);
                 ClearData();
                 $location.path('/user/home');
-            },
-            function (serverError) {
+            }, function (serverError) {
                 notificationService.showError("Registration failed!", serverError)
             });
     };
+
+    $scope.changePassword = function () {
+        authenticationService.ChangePassword($scope.changePasswordInfo, function (successData) {
+            notificationService.showInfo("You have successfully changed your password.");
+            $location.path('/user/home');
+        }, function (error) {
+            notificationService.showError("Error changing your password.");
+        });
+    }
+
 });

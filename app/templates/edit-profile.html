@@ -87,6 +87,55 @@
             </button>
         </form>
     </div>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <section class="row col-md-6 col-md-offset-3">
+        <form style="border: 1px solid black;" name="passwordForm" ng-controller="AuthenticationsController" ng-submit="changePassword()">
+            <div class="form-group input-group">
+                <span class="addon-icon input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" name="oldPassword" class="form-control" placeholder="Old password"
+                       ng-minlength="6" ng-maxlength="100" ng-model="changePasswordInfo.oldPassword" required/>
+            </div>
+            <div class="help-block"
+                 ng-messages="passwordForm.oldPassword.$dirty && passwordForm.oldPassword.$error">
+                <div ng-message="minlength">Your password must be at least 6 characters long.</div>
+                <div ng-message="required">A password is required to keep you safe.</div>
+                <div ng-message="maxlength">Better write that down.</div>
+            </div>
+
+
+            <div class="form-group input-group">
+                <span class="addon-icon input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" name="password" class="form-control" placeholder="New Password"
+                       ng-minlength="6" ng-maxlength="100" ng-model="changePasswordInfo.newPassword" required/>
+            </div>
+            <div class="help-block"
+                 ng-messages="passwordForm.password.$dirty && passwordForm.password.$error">
+                <div ng-message="minlength">Your password must be at least 6 characters long.</div>
+                <div ng-message="required">A password is required to keep you safe.</div>
+                <div ng-message="maxlength">Achievement unlocked - one time password!</div>
+            </div>
+
+            <div class="form-group input-group">
+                <span class="addon-icon input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" name="confirmPassword" class="form-control"
+                       placeholder="Confirm Password"
+                       ng-model="changePasswordInfo.confirmPassword"
+                       required compare-to="changePasswordInfo.newPassword"/>
+            </div>
+            <div class="help-block"
+                 ng-messages="passwordForm.confirmPassword.$dirty && passwordForm.confirmPassword.$error">
+                <div ng-message="minlength">Your password must be at least 6 characters long.</div>
+                <div ng-message="required">We require this to ensure your passwords match.</div>
+                <div ng-message="compareTo">Your passwords don't seem to match.</div>
+            </div>
+
+            <button ng-disabled="passwordForm.$invalid" id="submit-password-button" type="submit"
+                    class="btn btn-primary btn-lg btn-block col-md-2">Change Password
+            </button>
+        </form>
+    </section>
 </section>
 
 <!--Used to change the radio button state to active-->

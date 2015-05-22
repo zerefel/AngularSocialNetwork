@@ -1,30 +1,35 @@
-SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, profilesService, $location, notificationService, authenticationService, $route, $routeParams) {
+SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, profilesService, $localStorage, $location, notificationService, authenticationService, $route, $routeParams) {
 
     $scope.setCurrentUser = function () {
         $scope.currentUser = $routeParams.id;
     };
 
-    $scope.getUserData = function() {
-        authenticationService.GetUserProfileData(function(serverData) {
+    $scope.getUserData = function () {
+        authenticationService.GetUserProfileData(function (serverData) {
             $scope.userData = serverData;
             $('#gender' + serverData.gender).parent().addClass('active');
-        }, function() {
-           notificationService.showError("Error fetching data about your profile.")
+        }, function () {
+            notificationService.showError("Error fetching data about your profile.")
         });
     };
 
-    $scope.editProfile = function() {
+    $scope.editProfile = function () {
         authenticationService.EditUserProfile($scope.userData, function (serverData) {
-            $location('/user/home');
-            notificationService.showInfo("Successfully edited profile!");
+            authenticationService.GetUserProfileData(function (successData) {
+                notificationService.showInfo("Successfully edited profile!");
+                $rootScope.userProfileData = successData;
+                $localStorage.userProfileData = successData;
+                $location.path('/user/home');
+            }, function (error) {
+                notificationService.showError("Error editing profile.");
+            });
         }, function (errorMessage) {
-            notificationService.showError("Error editing profile.");
+            notificationService.showError("Error editing profile. " + errorMessage.message);
         });
     };
-
 
     $scope.searchUserByName = function () {
-        if($scope.searchUserName) {
+        if ($scope.searchUserName) {
             profilesService.getUsersByName($scope.searchUserName, function (serverData) {
                 $rootScope.searchResults = serverData;
             }, function (error) {
@@ -34,7 +39,7 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
     };
 
     $scope.setCurrentName = function () {
-        authenticationService.getUserFullData($routeParams.id, function (serverData) {
+        authenticationService.GetUserProfileData($routeParams.id, function (serverData) {
             $scope.currentName = serverData.name;
         }, function (error) {
 
@@ -53,30 +58,17 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
         profilesService.getFriendRequests(function (serverData) {
             $scope.friendRequests = serverData;
         }, function (error) {
-            notificationService.showError("Error loading friend requests.")
+            notificationService.showError("Error loading friend requests." + error.message);
         });
     };
 
-    $scope.submitPost = function () {
-        var user = $routeParams.id;
-        var content = $('#postTextArea').val();
-        if (!content) {
-            poppy.pop('error', 'Error', 'The post content cannot be empty');
-            return;
-        }
 
-        profilesService.newPost(user, content, function (serverData) {
-            $route.reload();
-        }, function (error) {
-            poppy.pop('error', 'Error', 'An error occured when trying to submit the post');
-        });
-    };
 
     $scope.acceptFriendRequest = function (id) {
         profilesService.acceptFriendRequest(id, function (successData) {
             $scope.navigateToPage('Request accepted successfully', '#/FriendRequests');
         }, function (error) {
-            poppy.pop('error', 'Error', 'There was an error approving the request');
+            //  poppy.pop('error', 'Error', 'There was an error approving the request');
         });
     };
 
@@ -84,7 +76,7 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
         profilesService.rejectFriendRequest(id, function (successData) {
             $scope.navigateToPage('Request rejected successfully', '#/FriendRequests');
         }, function (error) {
-            poppy.pop('error', 'Error', 'There was an error rejecting the request');
+            // poppy.pop('error', 'Error', 'There was an error rejecting the request');
         });
     };
 
@@ -92,7 +84,7 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
         profilesService.getOwnFriendsPreview(function (serverData) {
             $scope.ownFriendsPreview = serverData;
         }, function (error) {
-            poppy.pop('error', 'Error', 'There was an error getting the friends preview');
+            // poppy.pop('error', 'Error', 'There was an error getting the friends preview');
         });
     };
 
@@ -104,7 +96,7 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
         profilesService.getUserFriendsPreview($routeParams.id, function (serverData) {
             $scope.ownFriendsPreview = serverData;
         }, function (error) {
-            poppy.pop('error', 'Error', 'There was an error getting the friends preview');
+            // poppy.pop('error', 'Error', 'There was an error getting the friends preview');
         });
     };
 
@@ -116,7 +108,7 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
         profilesService.getUserFriendsDetails($routeParams.id, function (serverData) {
             $scope.friendsDetails = serverData;
         }, function (error) {
-            poppy.pop('error', 'Error', 'There was an error getting the friends details');
+            //poppy.pop('error', 'Error', 'There was an error getting the friends details');
         });
     };
 
@@ -124,7 +116,7 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
         profilesService.getOwnFriendsDetails(function (serverData) {
             $scope.friendsDetails = serverData;
         }, function (error) {
-            poppy.pop('error', 'Error', 'There was an error getting the friends details');
+            // poppy.pop('error', 'Error', 'There was an error getting the friends details');
         });
     };
 });
