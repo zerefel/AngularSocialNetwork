@@ -1,0 +1,100 @@
+<div ng-include="'templates/nav-bar.html'"></div>
+
+<section id="container" class="row col-md-8 col-md-offset-2" ng-controller="ProfilesController" ng-init="getUserData()">
+    <div class="col-md-12">
+        <form class="col-md-6" name="editProfileForm" novalidate ng-submit="editProfile()">
+            <section id="user-info-section">
+                <div class="form-group input-group">
+                    <span class="input-group-addon addon-icon"><i class="fa fa-circle-o-notch"></i></span>
+                    <input type="text" name="name" class="form-control" placeholder="Your Name"
+                           ng-model="userData.name" required/>
+                </div>
+                <div class="help-block"
+                     ng-messages="editProfileInfo.name.$dirty && editProfileInfo.name.$error">
+                    <div ng-message="required">Your name is required.</div>
+                </div>
+
+
+                <div class="form-group input-group">
+                    <span class="addon-icon input-group-addon">@</span>
+                    <input type="email" name="email" class="form-control" placeholder="Your Email"
+                           ng-model="userData.email" required/>
+                </div>
+                <div class="help-block"
+                     ng-messages="userData.name.$dirty && userData.name.$error">
+                    <div ng-message="required">Your name is required.</div>
+                </div>
+
+
+                <div class="row form-group">
+                    <div class="col-sm-9 col-md-12">
+                        <div class="col-sm-5 col-md-4 col-md-offset-1" id="gender-text">Your Gender:</div>
+                        <div class="btn-group col-md-6" data-toggle="buttons">
+                            <label class="btn btn-default">
+                                <input type="radio" name="gender" id="gender1" value="1" ng-model="userData.gender"/>
+                                Male
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="gender" id="gender2" value="2" ng-model="userData.gender"/>
+                                Female
+                            </label>
+                            <label class="btn btn-default">
+                                <input type="radio" name="gender" id="gender0" value="0" ng-model="userData.gender"/>
+                                Other
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <button ng-disabled="editProfileForm.$invalid" id="submit-button" type="submit"
+                    class="btn btn-success btn-lg btn-block col-md-2">Save Changes
+            </button>
+        </form>
+
+        <div class="col-md-3 picture-upload" ng-controller="UploadController">
+            <p>Profile Picture:</p>
+
+            <div class="form-group control-label">
+                <img class="picture-preview" id="profilePictureData" src="{{ userData.profileImageData }}"/>
+            </div>
+            <label for="file-upload" class="btn btn-info">
+                <i class="file-upload-icons fa fa-cloud-upload"></i>Upload Picture
+            </label>
+            <input id="file-upload" ng-file-select="onFileSelect($files, 'profile')" type="file"/>
+
+            <p>Size limit: 128KB</p>
+        </div>
+
+        <div class="form-group" ng-controller="UploadCoverController">
+            <label class="control-label">Cover Image:</label>
+
+            <div class="col-md-3 picture-upload">
+                <div class="form-group">
+                    <img class="picture-preview" id="coverPictureData" src="{{ userData.coverImageData  }}"/>
+                </div>
+                <label for="cover-file-upload" class="btn btn-info">
+                    <i class="file-upload-icons fa fa-cloud-upload"></i>Upload Picture
+                </label>
+                <input id="cover-file-upload" ng-file-select="onFileSelect($files)" type="file"/>
+
+                <p>Size limit: 1028KB</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!--Used to change the radio button state to active-->
+<script>
+    $(document).ready(function () {
+        addActiveClassRadio();
+
+        function addActiveClassRadio() {
+            $('input[name=gender]').on('click', function () {
+                $(this).parent().addClass('active');
+                $(this).parent().siblings().removeClass('active');
+            });
+        }
+    });
+</script>

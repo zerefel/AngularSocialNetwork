@@ -4,7 +4,14 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
         $scope.currentUser = $routeParams.id;
     };
 
-    $rootScope.searchUserName;
+    $scope.getUserData = function() {
+        authenticationService.GetUserProfileData(function(serverData) {
+            $scope.userData = serverData;
+            $('#gender' + serverData.gender).parent().addClass('active');
+        }, function() {
+           notificationService.showError("Error fetching data about your profile.")
+        });
+    };
 
     $scope.searchUserByName = function () {
         if($scope.searchUserName) {

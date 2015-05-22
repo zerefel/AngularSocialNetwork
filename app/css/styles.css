@@ -84,3 +84,20 @@ td {
 .search-hrefs:hover {
     color: grey;
 }
+
+#user-info-section {
+    border: 1px solid black;
+    margin: 20px;
+}
+
+.picture-preview {
+    width: 200px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-upload-icons {
+    padding-right: 10px;
+}

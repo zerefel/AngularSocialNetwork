@@ -31,6 +31,11 @@ SocialNetwork.config(function ($routeProvider) {
             templateUrl: 'templates/user-wall.html',
             controller: 'MainController'
         })
+        .when('/user/:username/edit', {
+            title: 'Profile',
+            templateUrl: 'templates/edit-profile.html',
+            controller: 'MainController'
+        })
         .otherwise({
             redirectTo: '/'
         });

@@ -17,8 +17,8 @@ SocialNetwork.factory('authenticationService', function ($http, baseUrl) {
             }).error(error);
     };
 
-    service.GetUserProfile = function (success, error) {
-        $http.get(serviceUrl + '/profile', {headers: this.GetHeaders()})
+    service.GetUserProfileData = function (success, error) {
+        $http.get(baseUrl + '/me', {headers: this.GetHeaders()})
             .success(function (data) {
                 success(data)
             }).error(error);

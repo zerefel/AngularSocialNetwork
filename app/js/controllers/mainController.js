@@ -10,12 +10,4 @@ SocialNetwork.controller('MainController', function ($scope, authenticationServi
         $scope.name = localStorage['name'];
         $scope.isLogged = authenticationService.isLoggedIn();
 
-        //$scope.search = function() {
-        //    authenticationService.searchUsers($routeParams.id, function(serverData) {
-        //        $scope.searchResults = serverData;
-        //    }, function (error) {
-        //        console.log(error);
-        //        poppy.pop('error', 'Error', 'There was an error trying to search with the given terms');
-        //    });
-        //}
 });
