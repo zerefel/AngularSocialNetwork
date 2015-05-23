@@ -1,41 +1,22 @@
 <div ng-include="'templates/nav-bar.html'"></div>
 
-<div class="row panel panel-info col-md-3" ng-controller="ProfilesController" ng-init="getOwnFriendsPreview()">
-    <div style="text-align: center; padding: 5px;">Friends</div>
-    <div class="btn-danger totalCount"><a href="#/{{username}}/friends" style="color: white;">You have {{ friendsPreview.totalCount }} friends</a></div>
-    <ul>
-        <li ng-repeat="friend in friendsPreview.friends" class="btn-primary friendPreview" style="display: inline-block; width: 200px;">
-            <a href="#/user/{{friend.username}}"><img src="{{friend.profileImageData}}" alt="" style="margin-left: 12px; width: 150px; height:150px" /></a>
-            <div style="text-align: center;">{{friend.name}}</div>
-        </li>
-    </ul>
-</div>
-
-
 <section id="container" class="row col-md-8 col-md-offset-2">
-    <div class="col-md-4 pull-left" id="friends-box">
-        <h4>Friends - number total</h4>
-        <table>
-            <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <section class="panel col-md-4 col-md-offset-0 pull-left" ng-init="getOwnFriendsPreview()" ng-controller="ProfilesController">
+        <a href="#/:username/friends"><h6>You have {{ friendsPreview.totalCount }} friends. Click here to visits friends page.</h6></a>
+        <ul>
+            <li ng-repeat="friend in friendsPreview.friends | limitTo:6" class="pull-left" style="margin-bottom: 10px; border: 2px solid gray;">
+                <div>
+                    <a href="#/user/{{friend.username}}"><img src="{{friend.profileImageData}}" style="width: 120px; height:120px"/></a>
+                    <a href="#/user/{{friend.username}}"><h3 style="display: inline;">{{friend.name}}</h3></a>
+                </div>
+            </li>
+        </ul>
+    </section>
 
-    <div class="col-md-8 pull-right" id="news-feed" ng-controller="PostsController" ng-init="getNewsFeed()">
+    <div class="col-md-8 pull-right" id="news-feed" ng-controller="PostsController" ng-init="getNewsFeed()" ng-show="contentLoaded">
         <h2 class="text-center">News feed</h2>
         <ul>
-            <!-- TODO: Refactor code-->
-            <li ng-repeat="post in newsFeed" class="btn-default post">
+            <li ng-repeat="post in newsFeed" class="btn-default post-list-item">
                 <img src="{{post.author.profileImageData}}" class="smallThumbnail" alt=""/>
 
                 <div style="display: inline;">
@@ -44,45 +25,51 @@
                     <a href="#/user/{{post.wallOwner.username}}" class="userName" data-id="{{post.wallOwner.username}}">{{
                         post.wallOwner.name}}</a>'s wall
                 </div>
-                <br/>
 
-                <div class="postDate" style="display: inline;">{{post.date | date }}</div>
-                <div class="postContent btn-info" style="margin: 5px; padding: 5px;">{{ post.postContent }}</div>
-                <div style="text-align: right;">
-                    {{post.likesCount}}
-                    <span class="likeButton btn-success" ng-if="!post.liked" ng-click="likePost(post.id)">Like</span>
-                    <span class="likeButton btn-danger" ng-if="post.liked" ng-click="unlikePost(post.id)">Unlike</span>
-                    <span class="btn-warning btn commentsButton" ng-click="showComments(post.id)">{{post.comments.length}} Comments</span>
-                    <span class="btn-primary commentButton" ng-click="showUserComment(post.id)">Comment</span>
+                <br>
+
+                <div style="display: inline;">{{post.date | date }}</div>
+                <div class="btn-info" style="margin: 5px; padding: 5px; overflow: hidden">{{ post.postContent }}</div>
+                <div class="post-buttons-section pull-right">
+                    <span ng-if="post.likesCount != 1">{{post.likesCount}} people like this</span>
+                    <span ng-if="post.likesCount == 1">{{post.likesCount}} person likes this</span>
+                    <span class="btn btn-success" ng-if="!post.liked" ng-click="likePost(post.id)">Like</span>
+                    <span class="btn btn-danger" ng-if="post.liked" ng-click="unlikePost(post.id)">Unlike</span>
+                    <span class="btn btn-default" ng-click="showUserComment(post.id)">Comment</span>
+                    <span class="btn btn-warning" ng-click="showComments(post.id)" ng-if="post.comments.length > 0 && post.comments.length != 1">{{post.comments.length}} Comments</span>
+                    <span class="btn btn-warning" ng-click="showComments(post.id)" ng-if="post.comments.length == 1">{{post.comments.length}} Comment</span>
+                    <span class="btn btn-warning" ng-click="showComments(post.id)" ng-if="post.comments.length == 0">No Comments</span>
                 </div>
-                <div class="userComment" id="userComment{{post.id}}"
+                <div class="comment-sections" id="userComment{{post.id}}"
                      style="margin-top: 10px; margin-bottom: 10px; display: none;">
-                    <textarea style="background:#c0c0c0" name cols="60" rows="4"
+                    <textarea style="background: ghostwhite; resize: none;"
                               id="userCommentContent{{post.id}}"></textarea>
 
                     <div style="text-align: right;">
-                        <span class="cancelButton btn-danger" ng-click="cancelComment(post.id)">Cancel</span>
-                        <span class="submitButton btn-primary" ng-click="submitComment(post.id)">Submit</span>
+                        <span class="btn btn-danger" ng-click="cancelComment(post.id)">Cancel</span>
+                        <span class="btn btn-primary" ng-click="submitComment(post.id)">Submit</span>
                     </div>
                 </div>
                 <div id="comments-{{post.id}}" style="display: none;">
-                    <ul>
+                    <ul id="comments-list">
                         <li ng-repeat="comment in post.comments" class="commentBox" ng-init="setHoverEvents()">
-                            <img src="{{comment.author.profileImageData}}" class="smallThumbnail" alt=""/>
+                            <section class="comment-list-item">
+                                <img src="{{comment.author.profileImageData}}" class="smallThumbnail" alt=""/>
 
-                            <div style="display: inline;">
-                                <a href="#/User/{{comment.author.username}}" class="userName"
-                                   data-id="{{comment.author.username}}">{{ comment.author.name }}</a>
-                            </div>
-                            <div>{{ comment.date | date }}</div>
-                            <div class="commentContent btn-primary">{{ comment.commentContent }}</div>
-                            <div style="text-align: right;">
-                                {{comment.likesCount}}
-                                <span class="likeButton btn btn-success" ng-if="!comment.liked"
-                                      ng-click="likeComment(post.id, comment.id)">Like</span>
-                                <span class="likeButton btn btn-danger" ng-if="comment.liked"
-                                      ng-click="unlikeComment(post.id, comment.id)">Unlike</span>
-                            </div>
+                                <div style="display: inline;">
+                                    <a href="#/User/{{comment.author.username}}" class="userName"
+                                       data-id="{{comment.author.username}}">{{ comment.author.name }}</a>
+                                </div>
+
+                                <div>{{ comment.date | date }}</div>
+                                <div class="btn-primary">{{ comment.commentContent }}</div>
+                                <div class="pull-right">
+                                    <span ng-if="comment.likesCount != 1">{{comment.likesCount}} people like this</span>
+                                    <span ng-if="comment.likesCount == 1">{{comment.likesCount}} person likes this</span>
+                                    <span class="likeButton btn btn-danger" ng-if="comment.liked" ng-click="unlikeComment(post.id, comment.id)">Unlike</span>
+                                    <span class="likeButton btn btn-success" ng-if="!comment.liked" ng-click="likeComment(post.id, comment.id)">Like</span>
+                                </div>
+                            </section>
                         </li>
                     </ul>
                 </div>

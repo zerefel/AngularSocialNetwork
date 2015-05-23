@@ -6,6 +6,7 @@ SocialNetwork.controller('PostsController', function($scope, postsService, $rout
     $scope.getNewsFeed = function () {
         postsService.getNewsFeed(function (serverData) {
             $scope.newsFeed = serverData;
+            $scope.contentLoaded = true;
         }, function (error) {
             notificationService.showError('Error loading news feed!');
         });
@@ -25,7 +26,7 @@ SocialNetwork.controller('PostsController', function($scope, postsService, $rout
         }, function (error) {
             poppy.pop('error', 'Error', 'There was an error liking the post');
         });
-    }
+    };
 
     $scope.unlikePost = function (id) {
         postsService.unlikePost(id, function (serverData) {
@@ -33,7 +34,7 @@ SocialNetwork.controller('PostsController', function($scope, postsService, $rout
         }, function (error) {
             poppy.pop('error', 'Error', 'There was an error unliking the post');
         });
-    }
+    };
 
     $scope.likeComment = function (postId, commentId) {
         postsService.likeComment(postId, commentId, function (serverData) {
@@ -41,7 +42,7 @@ SocialNetwork.controller('PostsController', function($scope, postsService, $rout
         }, function (error) {
             poppy.pop('error', 'Error', 'There was an error liking the comment');
         });
-    }
+    };
 
     $scope.unlikeComment = function (postId, commentId) {
         postsService.unlikeComment(postId, commentId, function (serverData) {
@@ -49,7 +50,7 @@ SocialNetwork.controller('PostsController', function($scope, postsService, $rout
         }, function (error) {
             poppy.pop('error', 'Error', 'There was an error unliking the comment');
         });
-    }
+    };
 
     $scope.showComments = function(id) {
         var comments = $('#comments-' + id);
@@ -58,7 +59,7 @@ SocialNetwork.controller('PostsController', function($scope, postsService, $rout
         } else {
             comments.css('display', 'none');
         }
-    }
+    };
 
     $scope.showUserComment = function(id) {
         var userComment = $('#userComment' + id);
@@ -67,7 +68,7 @@ SocialNetwork.controller('PostsController', function($scope, postsService, $rout
         } else {
             userComment.css('display', 'none');
         }
-    }
+    };
 
     $scope.cancelComment = function(id) {
         var userComment = $('#userComment' + id);

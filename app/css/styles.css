@@ -177,3 +177,25 @@ form {
     margin-top: 5px;
     padding-left: 5px;
 }
+
+.comment-sections {
+    margin-bottom: 20px;
+}
+
+#comments-list {
+    margin-bottom: 10px;
+}
+
+.comment-list-item {
+    padding-bottom: 10px;
+}
+
+.post-list-item {
+    padding-bottom: 50px;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.post-buttons-section  {
+
+}
