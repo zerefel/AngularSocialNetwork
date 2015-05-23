@@ -7,14 +7,12 @@
         <input class="row col-md-6 pull-right" id="name-filter" type="text" ng-model="searchName" placeholder="Enter name">
     </section>
 
-    <section class="row panel col-md-6 col-md-offset-3"
-             ng-init="getOwnFriendsPreview()">
+    <section class="row panel col-md-6 col-md-offset-3" ng-init="getOwnFriendsPreview()" style="padding-bottom: 20px;">
         <h2>You have a total of {{ friendsPreview.totalCount }} friends.</h2>
         <ul>
             <li ng-repeat="friend in friendsPreview.friends | filter:searchName" style="margin-bottom: 10px;">
                 <div ng-class-even="'even'" ng-class-odd="'odd'">
-                    <a href="#/user/{{friend.username}}"><img src="{{friend.profileImageData}}"
-                                                              style="width: 120px; height:120px"/></a>
+                    <a href="#/user/{{friend.username}}"><img src="{{friend.profileImageData}}" style="width: 120px; height:120px"/></a>
                     <a href="#/user/{{friend.username}}"><h3 style="display: inline;">{{friend.name}}</h3></a>
                 </div>
             </li>

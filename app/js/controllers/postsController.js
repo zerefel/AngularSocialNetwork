@@ -146,7 +146,7 @@ SocialNetwork.controller('PostsController', function ($scope, postsService, $rou
 
     $scope.isDeletablePost = function (post) {
         if (post.author.username === authenticationService.GetUsername() ||
-            post.wallOwner.username === sauthenticationService.GetUsername()) {
+            post.wallOwner.username === authenticationService.GetUsername()) {
             return true;
         }
         return false;

@@ -3,17 +3,24 @@
 <section ng-show="contentLoaded">
     <div>
         <header class="header" id="header" ng-init="getWallOwnerData()" style=" height: 400px; margin-top: -20px; background-size: cover; background-position: center center;">
-            <div class="image-container" id="userProfileImage">
-                <img class="thumbnail"  style="width: 250px; height: 300px;" src="{{wallOwner.profileImageData}}"/>
+            <div class="image-container">
+                <img class="thumbnail"  style="width: 300px; height: 300px;" src="{{wallOwner.profileImageData}}"/>
             </div>
             <div id="wall-owner-name-container">
                 <h2 class="wall-owner-name">{{ wallOwner.name }}</h2>
             </div>
+
+            <div class="col-md-1 col-md-offset-0" style="margin-top: -100px; " >
+                <span class="btn btn-success" ng-controller="ProfilesController" ng-if="!hasPendingFriendRequest && !isWallOwnerFriend && !isWallOwnerMe()" ng-click="sendFriendRequest()">Send friend request</span>
+                <span class="btn btn-info" ng-if="hasPendingFriendRequest">Friend request pending approval</span>
+                <span class="btn btn-primary" ng-if="isWallOwnerFriend">Friends</span>
+            </div>
+
         </header>
     </div>
 
-    <div ng-controller="PostsController" class="row col-md-6 col-md-offset-3">
-        <div id="post-container" class="panel panel-info" ng-if="isWallOwnerFriend || isWallOwnerMe">
+    <div style="display: inline;" class="row col-md-6 col-md-offset-2" ng-controller="PostsController">
+        <div id="post-container" class="panel panel-info" ng-if="isWallOwnerFriend || isWallOwnerMe()">
             <textarea id="post-text-area" placeholder="What's on your mind"></textarea>
             <div>
                 <button class="btn btn-primary pull-right" style="margin-right: 8px;" ng-click="submitPost()">Submit Post</button>
@@ -21,16 +28,36 @@
         </div>
     </div>
 
-    <div class="main row col-md-offset-3 col-md-6" ng-controller="PostsController" ng-init="getWallOwnerPosts()">
+
+    <div class="row col-md-3 pull-right" style="margin-right: 100px;" ng-controller="ProfilesController" ng-init="getWallOwnerFriendsPreview()" ng-show="friendsPreview">
+        <h2 style="display: inline;">Friends</h2>
+        <section class="panel col-md-12 col-md-offset-0" >
+            <h5>This user has {{ friendsPreview.totalCount }} friends.</h5>
+            <ul>
+                <li ng-repeat="friend in friendsPreview.friends | limitTo:6" class="pull-left" style="margin-bottom: 10px; width:100%">
+                    <div style="margin-left: -50px;">
+                        <a href="#/user/{{friend.username}}"><img src="{{friend.profileImageData}}" style="width: 120px; height:120px"/></a>
+                        <a href="#/user/{{friend.username}}"><p style="display: inline-block; font-size: 30px;">{{friend.name}}</p></a>
+                    </div>
+                </li>
+            </ul>
+            <section>
+                <h5 ng-show="friendsPreview == false">You must have this user in friends to view his friends.</h5>
+            </section>
+        </section>
+    </div>
+
+
+    <div class="main row col-md-offset-2 col-md-6" ng-controller="PostsController" ng-init="getWallOwnerPosts()" style="display: inline;">
         <ul>
-            <li ng-repeat="post in wallPosts" class="post-list-element btn-default post">
+            <li ng-repeat="post in wallPosts" class="post-list-element col-md-12 btn-default post">
                 <div class="pull-right">
                     <button class="btn btn-warning" ng-if="isDeletablePost(post)" ng-click="deletePost(post.id)">Delete</button>
                 </div>
                 <div class="pull-right">
                     <button class="btn btn-warning" ng-if="isDeletablePost(post)" ng-click="editPost(post.id)">Edit</button>
                 </div>
-                <img src="{{post.author.profileImageData}}"  alt=""/>
+                <img src="{{post.author.profileImageData}}" alt=""/>
                 <div style="display: inline;">
                     <a href="#/user/{{post.author.username}}" data-id="{{post.author.username}}">{{post.author.name}}</a>
                 </div>
@@ -40,15 +67,15 @@
                 <div style="text-align: right;">
                     <span ng-if="post.likesCount != 1">{{post.likesCount}} people like this</span>
                     <span ng-if="post.likesCount == 1">{{post.likesCount}} person likes this</span>
-                    <span class="btn btn-success" ng-if="!post.liked" ng-click="likePost(post.id)">Like</span>
-                    <span class="btn btn-danger" ng-if="post.liked" ng-click="unlikePost(post.id)">Unlike</span>
-                    <span class="btn btn-default" ng-click="showUserComment(post.id)">Comment</span>
+                    <span class="btn btn-success" ng-if="!post.liked && isWallOwnerFriend || !post.liked && isWallOwnerMe()" ng-click="likePost(post.id)">Like</span>
+                    <span class="btn btn-danger" ng-if="post.liked && isWallOwnerFriend || post.liked && isWallOwnerMe()" ng-click="unlikePost(post.id)">Unlike</span>
+                    <span class="btn btn-default" ng-click="showUserComment(post.id)" ng-if="isWallOwnerFriend || isWallOwnerMe()">Comment</span>
                     <span class="btn btn-warning" ng-click="showComments(post.id)" ng-if="post.comments.length > 0 && post.comments.length != 1">{{post.comments.length}} Comments</span>
                     <span class="btn btn-warning" ng-click="showComments(post.id)" ng-if="post.comments.length == 1">{{post.comments.length}} Comment</span>
                     <span class="btn btn-warning" ng-click="showComments(post.id)" ng-if="post.comments.length == 0">No Comments</span>
                 </div>
-                <div class="comment-sections" id="user-comment{{post.id}}" style="margin-top: 10px; margin-bottom: 10px; display: none;">
-                    <textarea class="comment-textarea" style="background: whitesmoke" id="user-comment-content{{post.id}}"></textarea>
+                <div class="comment-sections" id="user-comment{{post.id}}">
+                    <textarea class="comment-textarea" style="background: whitesmoke" id="user-comment-content{{post.id}}" placeholder="Enter your comment here..."></textarea>
                     <div style="text-align: right;">
                         <span class="btn btn-primary" ng-click="submitComment(post.id)">Submit</span>
                         <span class="btn btn-danger" ng-click="cancelComment(post.id)">Cancel</span>
@@ -66,8 +93,8 @@
                             <div style="text-align: right;">
                                 <span ng-if="comment.likesCount != 1">{{comment.likesCount}} people like this</span>
                                 <span ng-if="comment.likesCount == 1">{{comment.likesCount}} person likes this</span>
-                                <span class="likeButton btn btn-danger" ng-if="comment.liked" ng-click="unlikeComment(post.id, comment.id)">Unlike</span>
-                                <span class="likeButton btn btn-success" ng-if="!comment.liked" ng-click="likeComment(post.id, comment.id)">Like</span>
+                                <span class="btn btn-danger" ng-if="comment.liked" ng-click="unlikeComment(post.id, comment.id)">Unlike</span>
+                                <span class="btn btn-success" ng-if="!comment.liked && isWallOwnerFriend || !comment.liked && isWallOwnerMe()" ng-click="likeComment(post.id, comment.id)">Like</span>
                                 <button class="btn btn-danger" ng-if="isDeletableComment(comment.author, post.author)" ng-click="deleteComment(post.id, comment.id)">Delete</button>
                             </div>
                         </li>
@@ -80,4 +107,3 @@
         </ul>
     </div>
 </section>
-

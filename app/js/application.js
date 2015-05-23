@@ -42,7 +42,8 @@ SocialNetwork.config(function ($routeProvider) {
         .when('/:username/friends', {
             title: 'Friends',
             templateUrl: 'templates/friends.html',
-            controller: 'MainController'
+            controller: 'MainController',
+            loginRequired: true
         })
         .otherwise({
             redirectTo: '/'
@@ -54,3 +55,21 @@ SocialNetwork.run(['$location', '$rootScope', function ($location, $rootScope) {
         $rootScope.title = current.$$route.title;
     });
 }]);
+
+
+
+function redirectToHomeIfNotLogged() {
+    if (!localStorage['sessionToken']) {
+        var splitted = window.location.href.split('#');
+        window.location.replace(splitted[0] + '#/');
+
+        poppy.pop('error', 'Error', 'You must be logged in to access this page');
+    }
+}
+
+function loadUserHomePage() {
+    if (sessionStorage['accessToken']) {
+        var splitted = window.location.href.split('#');
+        window.location.replace(splitted[0] + '#/');
+    }
+}

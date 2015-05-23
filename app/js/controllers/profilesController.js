@@ -90,27 +90,28 @@ SocialNetwork.controller('ProfilesController', function (baseUrl, $scope, $http,
     };
 
     $scope.getWallOwnerFriendsPreview = function () {
-        if ($routeParams.username == localStorage['username']) {
+        if ($routeParams.username == authenticationService.GetUsername()) {
             $scope.getOwnFriendsPreview();
             return;
         }
         profilesService.getUserFriendsPreview($routeParams.username, function (serverData) {
             $scope.friendsPreview = serverData;
+            $scope.wallOwnerName = $routeParams.username;
         }, function (error) {
-            notificationService.showError("Error getting friends preview. " + error.message);
+           // notificationService.showError("Error getting friends preview. " + error.message);
         });
     };
 
     $scope.getWallOwnerFriendsDetails = function () {
-        if ($routeParams.username == sessionStorage['username']) {
+        if ($routeParams.username == authenticationService.GetUsername()) {
             $scope.getFriendsDetails();
-            return;
+        } else {
+            profilesService.getUserFriendsDetails($routeParams.username, function (serverData) {
+                $scope.friendsDetails = serverData;
+            }, function (error) {
+                notificationService.showError('Error getting friends details. ' + error.messsage);
+            });
         }
-        this.getUserFriendsDetails($routeParams.username, function (serverData) {
-            $scope.friendsDetails = serverData;
-        }, function (error) {
-            notificationService.showError('Error getting friends details. ' + error.messsage);
-        });
     };
 
     $scope.getFriendsDetails = function () {
@@ -120,4 +121,13 @@ SocialNetwork.controller('ProfilesController', function (baseUrl, $scope, $http,
             notificationService.showError('Error getting friends details. ' + error.messsage);
         });
     };
+
+    $scope.sendFriendRequest = function() {
+        profilesService.sendFriendRequest($routeParams.username, function(serverData) {
+            notificationService.showInfo('Successfully sent friend request.');
+            $route.reload();
+        }, function (error) {
+            notificationService.showError('Error sending friend request. Please try again. ' + error.message);
+        });
+    }
 });

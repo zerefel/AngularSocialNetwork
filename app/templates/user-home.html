@@ -1,30 +1,35 @@
 <div ng-include="'templates/nav-bar.html'"></div>
 
 <section id="container" class="row col-md-8 col-md-offset-2">
-    <h2 style="display: inline;">Friends</h2>
+    <h2>Friends</h2>
     <section class="panel col-md-4 col-md-offset-0 pull-left" ng-init="getOwnFriendsPreview()" ng-controller="ProfilesController">
-        <a href="#/:username/friends"><h6>You have {{ friendsPreview.totalCount }} friends. Click here to visits friends page.</h6></a>
+        <a href="#/:username/friends"><h6>You have {{ friendsPreview.totalCount }} friends. Click here to visits friendspage.</h6></a>
         <ul>
-            <li ng-repeat="friend in friendsPreview.friends | limitTo:6" class="pull-left" style="margin-bottom: 10px; border: 2px solid gray;">
+            <li ng-repeat="friend in friendsPreview.friends | limitTo:6" class="pull-left"
+                style="margin-bottom: 10px; width: 100%;">
                 <div style="margin-left: -50px;">
                     <a href="#/user/{{friend.username}}"><img src="{{friend.profileImageData}}" style="width: 120px; height:120px"/></a>
-                    <a href="#/user/{{friend.username}}"><h3 style="display: inline;">{{friend.name}}</h3></a>
+                    <a href="#/user/{{friend.username}}"><p style="display: inline; font-size: 30px;">{{friend.name}}</p></a>
                 </div>
             </li>
         </ul>
     </section>
 
-    <div class="col-md-8 pull-right" id="news-feed" ng-controller="PostsController" ng-init="getNewsFeed()" ng-show="contentLoaded">
+    <div class="col-md-8 pull-right" id="news-feed" ng-controller="PostsController" ng-init="getNewsFeed()"
+         ng-show="contentLoaded">
         <h2 class="text-center">News feed</h2>
         <ul>
             <li ng-repeat="post in newsFeed" class="btn-default post-list-item">
-                <img src="{{post.author.profileImageData}}" class="smallThumbnail" alt=""/>
+                <img src="{{post.author.profileImageData}}"/>
 
-                <div style="display: inline;">
-                    <a href="#/user/{{post.author.username}}" class="userName" data-id="{{post.author.username}}">{{post.author.name}}</a>posted on
-                    <a href="#/user/{{post.wallOwner.username}}" class="userName" data-id="{{post.wallOwner.username}}">{{post.wallOwner.name}}</a>'s wall
+                <div style="display: block;">
+                    <a href="#/user/{{post.author.username}}" class="userName" data-id="{{post.author.username}}">{{post.author.name}}</a>posted
+                    on
+                    <a href="#/user/{{post.wallOwner.username}}" class="userName" data-id="{{post.wallOwner.username}}">{{post.wallOwner.name}}</a>'s
+                    wall
                 </div>
                 <br>
+
                 <div style="display: inline;">{{post.date | date }}</div>
                 <div class="btn-info" style="margin: 5px; padding: 5px; overflow: hidden">{{ post.postContent }}</div>
                 <div class="post-buttons-section pull-right">
@@ -33,13 +38,14 @@
                     <span class="btn btn-success" ng-if="!post.liked" ng-click="likePost(post.id)">Like</span>
                     <span class="btn btn-danger" ng-if="post.liked" ng-click="unlikePost(post.id)">Unlike</span>
                     <span class="btn btn-default" ng-click="showUserComment(post.id)">Comment</span>
-                    <span class="btn btn-warning" ng-click="showComments(post.id)" ng-if="post.comments.length > 0 && post.comments.length != 1">{{post.comments.length}} Comments</span>
+                    <span class="btn btn-warning" ng-click="showComments(post.id)"
+                          ng-if="post.comments.length > 0 && post.comments.length != 1">{{post.comments.length}} Comments</span>
                     <span class="btn btn-warning" ng-click="showComments(post.id)" ng-if="post.comments.length == 1">{{post.comments.length}} Comment</span>
                     <span class="btn btn-warning" ng-click="showComments(post.id)" ng-if="post.comments.length == 0">No Comments</span>
                 </div>
-                <div class="comment-sections" id="user-comment{{post.id}}"
-                     style="margin-top: 10px; margin-bottom: 10px; display: none;">
-                    <textarea class="comment-textarea" id="user-comment-content{{post.id}}"></textarea>
+                <div class="comment-sections" id="user-comment{{post.id}}">
+                    <textarea class="comment-textarea comment-textarea-newsfeed" id="user-comment-content{{post.id}}"
+                              placeholder="Enter your comment here..."></textarea>
 
                     <div style="text-align: right; display: inline;">
                         <span class="btn btn-primary" ng-click="submitComment(post.id)">Submit</span>
@@ -62,8 +68,10 @@
                                 <div class="pull-right">
                                     <span ng-if="comment.likesCount != 1">{{comment.likesCount}} people like this</span>
                                     <span ng-if="comment.likesCount == 1">{{comment.likesCount}} person likes this</span>
-                                    <span class="likeButton btn btn-danger" ng-if="comment.liked" ng-click="unlikeComment(post.id, comment.id)">Unlike</span>
-                                    <span class="likeButton btn btn-success" ng-if="!comment.liked" ng-click="likeComment(post.id, comment.id)">Like</span>
+                                    <span class="likeButton btn btn-danger" ng-if="comment.liked"
+                                          ng-click="unlikeComment(post.id, comment.id)">Unlike</span>
+                                    <span class="likeButton btn btn-success" ng-if="!comment.liked"
+                                          ng-click="likeComment(post.id, comment.id)">Like</span>
                                 </div>
                             </section>
                         </li>

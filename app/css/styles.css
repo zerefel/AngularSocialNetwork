@@ -123,6 +123,7 @@ input[type="file"] {
     margin: 0;
     margin-top: -12px;
     padding: 0;
+    display: inline;
 }
 
 #post-text-area {
@@ -135,6 +136,11 @@ input[type="file"] {
 
 #post-container {
     height: 120px;
+    width: auto;
+}
+
+#wall-owner-name-container {
+    margin-top: 45px;
 }
 
 .wall-owner-name {
@@ -143,7 +149,6 @@ input[type="file"] {
 }
 
 .post-list-element {
-    margin-left: 0;
     border: 1px solid ghostwhite;
     margin-bottom: 20px;
     padding-bottom: 20px;
@@ -198,10 +203,6 @@ form {
     margin-bottom: 30px;
 }
 
-.post-buttons-section {
-
-}
-
 .comment-textarea {
     background: ghostwhite;
     resize: none;
@@ -217,4 +218,14 @@ form {
 .comment-sections {
     height: 150px;
     margin-bottom: 20px;
+    margin-top: 10px;
+    display: none;
+}
+
+.comment-textarea-newsfeed {
+    width: 550px;
+ }
+
+#news-feed {
+    margin-top: -83px;
 }
