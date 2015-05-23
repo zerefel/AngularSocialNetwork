@@ -1,11 +1,12 @@
 <div ng-include="'templates/nav-bar.html'"></div>
 
 <section id="container" class="row col-md-8 col-md-offset-2">
+    <h2 style="display: inline;">Friends</h2>
     <section class="panel col-md-4 col-md-offset-0 pull-left" ng-init="getOwnFriendsPreview()" ng-controller="ProfilesController">
         <a href="#/:username/friends"><h6>You have {{ friendsPreview.totalCount }} friends. Click here to visits friends page.</h6></a>
         <ul>
             <li ng-repeat="friend in friendsPreview.friends | limitTo:6" class="pull-left" style="margin-bottom: 10px; border: 2px solid gray;">
-                <div>
+                <div style="margin-left: -50px;">
                     <a href="#/user/{{friend.username}}"><img src="{{friend.profileImageData}}" style="width: 120px; height:120px"/></a>
                     <a href="#/user/{{friend.username}}"><h3 style="display: inline;">{{friend.name}}</h3></a>
                 </div>
@@ -20,14 +21,10 @@
                 <img src="{{post.author.profileImageData}}" class="smallThumbnail" alt=""/>
 
                 <div style="display: inline;">
-                    <a href="#/user/{{post.author.username}}" class="userName" data-id="{{post.author.username}}">{{post.author.name}}</a>
-                    posted on
-                    <a href="#/user/{{post.wallOwner.username}}" class="userName" data-id="{{post.wallOwner.username}}">{{
-                        post.wallOwner.name}}</a>'s wall
+                    <a href="#/user/{{post.author.username}}" class="userName" data-id="{{post.author.username}}">{{post.author.name}}</a>posted on
+                    <a href="#/user/{{post.wallOwner.username}}" class="userName" data-id="{{post.wallOwner.username}}">{{post.wallOwner.name}}</a>'s wall
                 </div>
-
                 <br>
-
                 <div style="display: inline;">{{post.date | date }}</div>
                 <div class="btn-info" style="margin: 5px; padding: 5px; overflow: hidden">{{ post.postContent }}</div>
                 <div class="post-buttons-section pull-right">
@@ -40,24 +37,23 @@
                     <span class="btn btn-warning" ng-click="showComments(post.id)" ng-if="post.comments.length == 1">{{post.comments.length}} Comment</span>
                     <span class="btn btn-warning" ng-click="showComments(post.id)" ng-if="post.comments.length == 0">No Comments</span>
                 </div>
-                <div class="comment-sections" id="userComment{{post.id}}"
+                <div class="comment-sections" id="user-comment{{post.id}}"
                      style="margin-top: 10px; margin-bottom: 10px; display: none;">
-                    <textarea style="background: ghostwhite; resize: none;"
-                              id="userCommentContent{{post.id}}"></textarea>
+                    <textarea class="comment-textarea" id="user-comment-content{{post.id}}"></textarea>
 
-                    <div style="text-align: right;">
-                        <span class="btn btn-danger" ng-click="cancelComment(post.id)">Cancel</span>
+                    <div style="text-align: right; display: inline;">
                         <span class="btn btn-primary" ng-click="submitComment(post.id)">Submit</span>
+                        <span class="btn btn-danger" ng-click="cancelComment(post.id)">Cancel</span>
                     </div>
                 </div>
                 <div id="comments-{{post.id}}" style="display: none;">
                     <ul id="comments-list">
-                        <li ng-repeat="comment in post.comments" class="commentBox" ng-init="setHoverEvents()">
+                        <li ng-repeat="comment in post.comments" ng-init="setHoverEvents()">
                             <section class="comment-list-item">
-                                <img src="{{comment.author.profileImageData}}" class="smallThumbnail" alt=""/>
+                                <img src="{{comment.author.profileImageData}}" alt=""/>
 
                                 <div style="display: inline;">
-                                    <a href="#/User/{{comment.author.username}}" class="userName"
+                                    <a href="#/user/{{comment.author.username}}"
                                        data-id="{{comment.author.username}}">{{ comment.author.name }}</a>
                                 </div>
 

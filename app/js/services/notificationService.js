@@ -6,11 +6,10 @@ SocialNetwork.factory('notificationService',
                         text: msg,
                         type: 'success',
                         layout: 'bottomCenter',
-                        timeout: 1000}
+                        timeout: 2000}
                 );
             },
             showError: function(msg, serverError) {
-                // Collect errors to display from the server response
                 var errors = [];
                 if (serverError && serverError.error_description) {
                     errors.push(serverError.error_description);

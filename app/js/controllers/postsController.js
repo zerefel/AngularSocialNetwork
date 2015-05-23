@@ -1,58 +1,63 @@
 /**
  * Created by ZerefeL on 21/05/15.
  */
-SocialNetwork.controller('PostsController', function($scope, postsService, $route, $routeParams, notificationService) {
+SocialNetwork.controller('PostsController', function ($scope, postsService, $route, $routeParams, notificationService, authenticationService) {
 
     $scope.getNewsFeed = function () {
         postsService.getNewsFeed(function (serverData) {
             $scope.newsFeed = serverData;
             $scope.contentLoaded = true;
         }, function (error) {
-            notificationService.showError('Error loading news feed!');
+            notificationService.showError('Error loading news feed!' + error.message);
         });
     };
 
-    $scope.getWallOwnerPosts = function() {
-        postsService.getWallPosts($routeParams.username, function(serverData) {
+    $scope.getWallOwnerPosts = function () {
+        postsService.getWallPosts($routeParams.username, function (serverData) {
             $scope.wallPosts = serverData;
-        }, function(error) {
-            //poppy.pop('error', 'Error', 'There was an error loading the wall posts');
+        }, function (error) {
+            notificationService.showError('Error loading wall owner posts.' + error.message);
+
         });
     };
 
     $scope.likePost = function (id) {
         postsService.likePost(id, function (serverData) {
             $route.reload();
+            notificationService.showInfo('Post liked.');
         }, function (error) {
-            poppy.pop('error', 'Error', 'There was an error liking the post');
+            notificationService.showError('Error liking post.' + error.message);
         });
     };
 
     $scope.unlikePost = function (id) {
         postsService.unlikePost(id, function (serverData) {
             $route.reload();
+            notificationService.showInfo('Post unliked.');
         }, function (error) {
-            poppy.pop('error', 'Error', 'There was an error unliking the post');
+            notificationService.showError('Error unliking post.' + error.message);
         });
     };
 
     $scope.likeComment = function (postId, commentId) {
         postsService.likeComment(postId, commentId, function (serverData) {
             $route.reload();
+            notificationService.showInfo('Post comment liked.');
         }, function (error) {
-            poppy.pop('error', 'Error', 'There was an error liking the comment');
+            notificationService.showError('Error liking comment.' + error.message);
         });
     };
 
     $scope.unlikeComment = function (postId, commentId) {
         postsService.unlikeComment(postId, commentId, function (serverData) {
             $route.reload();
+            notificationService.showInfo('Post comment unliked.');
         }, function (error) {
-            poppy.pop('error', 'Error', 'There was an error unliking the comment');
+            notificationService.showError('Error unliking comment.' + error.message);
         });
     };
 
-    $scope.showComments = function(id) {
+    $scope.showComments = function (id) {
         var comments = $('#comments-' + id);
         if (comments.css('display') === 'none') {
             comments.css('display', 'block');
@@ -61,18 +66,19 @@ SocialNetwork.controller('PostsController', function($scope, postsService, $rout
         }
     };
 
-    $scope.showUserComment = function(id) {
-        var userComment = $('#userComment' + id);
+    $scope.showUserComment = function (id) {
+        var userComment = $('#user-comment' + id);
         if (userComment.css('display') === 'none') {
             userComment.css('display', 'block');
+            $('#user-comment').child('textarea').css('width', '600px');
         } else {
             userComment.css('display', 'none');
         }
     };
 
-    $scope.cancelComment = function(id) {
-        var userComment = $('#userComment' + id);
-        var userCommentContent = $('#userCommentContent' + id);
+    $scope.cancelComment = function (id) {
+        var userComment = $('#user-comment' + id);
+        var userCommentContent = $('#user-comment-content' + id);
 
         userCommentContent.val('');
         userComment.css('display', 'none');
@@ -80,42 +86,34 @@ SocialNetwork.controller('PostsController', function($scope, postsService, $rout
 
     $scope.submitPost = function () {
         var user = $routeParams.username;
-        var content = $scope.postContent;
-
-        postsService.newPost(user, content, function (serverData) {
-            $route.reload();
-            notificationService.showInfo("Posted successfully!");
-        }, function (error) {
-            notificationService.showError('There was an error submitting this post. ' + error.message)
-        });
+        var postContent = $('#post-text-area').val();
+        if (postContent.length > 1) {
+            postsService.newPost(user, postContent, function (serverData) {
+                $route.reload();
+                notificationService.showInfo("Post submitted successfully!");
+            }, function (error) {
+                notificationService.showError('There was an error submitting this post. ' + error.message)
+            });
+        }
     };
 
-    $scope.submitComment = function(id) {
-        var userComment = $('#userComment' + id);
-        var userCommentContent = $('#userCommentContent' + id);
+    $scope.submitComment = function (id) {
+        var userCommentContent = $('#user-comment-content' + id);
         var content = userCommentContent.val();
 
         postsService.commentPost(id, content, function (serverData) {
             $route.reload();
-            poppy.pop('success', 'Success', 'Post commented successfully.');
+            notificationService.showInfo('Post commented successfully.');
         }, function (error) {
-            if (error.message === "Session token expired or not valid.") {
-                $scope.clearCredentials();
-                $scope.navigateToPage("Your session has expired. Please login again");
-                return;
-            }
-            poppy.pop('error', 'Error', 'There was an error commenting the post.');
+            notificationService.showError('Error commenting post.');
         });
-
-        userCommentContent.val('');
-        userComment.css('display', 'none');
     };
 
-    $scope.deletePost = function(id) {
-        postsService.deletePost(id, function(serverData) {
+    $scope.deletePost = function (id) {
+        postsService.deletePost(id, function (serverData) {
             $route.reload();
             notificationService.showInfo("Successfully deleted post.");
-        }, function(error) {
+        }, function (error) {
             notificationService.showError("Error deleting post. " + error.message);
         });
     };
@@ -138,34 +136,39 @@ SocialNetwork.controller('PostsController', function($scope, postsService, $rout
         });
     };
 
-    $scope.getPostDetails = function() {
-        postsService.getPostDetails($routeParams.id, function(serverData) {
+    $scope.getPostDetails = function () {
+        postsService.getPostDetails($routeParams.username, function (serverData) {
             $scope.post = serverData;
-        }, function(error) {
-            poppy.pop('error', 'Error', 'An error occured when trying to load the post details');
+        }, function (error) {
+            notificationService.showError('Error ferching post.' + error.message);
         });
     };
 
-    $scope.isDeletablePost = function(post) {
-        if (post.author.username === sessionStorage['username'] ||
-            post.wallOwner.username === sessionStorage['username']) {
+    $scope.isDeletablePost = function (post) {
+        if (post.author.username === authenticationService.GetUsername() ||
+            post.wallOwner.username === sauthenticationService.GetUsername()) {
             return true;
         }
         return false;
     };
 
-    $scope.isDeletableComment = function(commentAuthor, postAuthor) {
-        return commentAuthor.username === sessionStorage['username'] ||
-            postAuthor.username === sessionStorage['username'];
+    $scope.isDeletableComment = function (commentAuthor, postAuthor) {
+        return commentAuthor.username === authenticationService.GetUsername() ||
+            postAuthor.username === authenticationService.GetUsername();
     };
 
-    $scope.isPostOwnerOrAuthorFriend = function(post) {
-        return post.author.isFriend || post.wallOwner.isFriend ||
-            (post.author.username === sessionStorage['username']) ||
-            (post.wallOwner.username === sessionStorage['username']);
+    $scope.isPostOwnerOrAuthorFriend = function (post) {
+        return post.author.isFriend ||
+            post.wallOwner.isFriend ||
+            (post.author.username === authenticationService.GetUsername()) ||
+            (post.wallOwner.username === authenticationService.GetUsername());
     };
 
-    $scope.exceededCommentsCount = function(length) {
+    $scope.isWallOwnerMe = function() {
+        return $routeParams.username === authenticationService.GetUsername();
+    };
+
+    $scope.exceededCommentsCount = function (length) {
         return length > 3;
     };
 });

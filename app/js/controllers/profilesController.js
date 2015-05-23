@@ -47,7 +47,7 @@ SocialNetwork.controller('ProfilesController', function (baseUrl, $scope, $http,
     };
 
     $scope.isWallOwnerFriend = function () {
-        authenticationService.getUserFullData($route.id, function (serverData) {
+        authenticationService.GetProfileDataForSpecificUser($routeParams.username, function (serverData) {
             return serverData.isFriend;
         }, function (error) {
             return false;
@@ -64,7 +64,7 @@ SocialNetwork.controller('ProfilesController', function (baseUrl, $scope, $http,
 
     $scope.acceptFriendRequest = function (id) {
         profilesService.acceptFriendRequest(id, function (successData) {
-            notificationService('Friend request accepted!');
+            notificationService.showInfo('Friend request accepted!');
             $route.reload();
         }, function (error) {
             notificationService.showError('Error accepting friend request.' + error.message);
@@ -73,7 +73,7 @@ SocialNetwork.controller('ProfilesController', function (baseUrl, $scope, $http,
 
     $scope.rejectFriendRequest = function (id) {
         profilesService.rejectFriendRequest(id, function (successData) {
-            notificationService('Friend request rejected!');
+            notificationService.showInfo('Friend request rejected!');
             $route.reload();
         }, function (error) {
             notificationService.showError('Error rejecting friend request.' + error.message);

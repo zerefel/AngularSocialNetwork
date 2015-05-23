@@ -36,7 +36,7 @@ SocialNetwork.factory('postsService', function ($http, baseUrl, authenticationSe
 
     service.deletePost = function (postId, success, error) {
         $http.delete(serviceUrl + '/posts/' + postId,
-            { headers: authenticationService.GetHeaders() })
+            {headers: authenticationService.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data);
             }).error(function (data) {
@@ -87,6 +87,16 @@ SocialNetwork.factory('postsService', function ($http, baseUrl, authenticationSe
     service.commentPost = function (postId, content, success, error) {
         $http.post(serviceUrl + '/posts/' + postId + '/comments',
             {'commentContent': content},
+            {headers: authenticationService.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
+    };
+
+    service.deleteComment = function (postId, commentId, success, error) {
+        $http.delete(serviceUrl + '/posts/' + postId + '/comments/' + commentId,
             {headers: authenticationService.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data);

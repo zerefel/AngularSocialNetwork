@@ -15,6 +15,7 @@ SocialNetwork.controller('MainController', function ($scope, $rootScope, $localS
         authenticationService.GetProfileDataForSpecificUser($routeParams.username, function(serverData) {
             $scope.wallOwner = serverData;
             $scope.contentLoaded = true;
+            $scope.isWallOwnerFriend = serverData.isFriend;
             if(serverData.coverImageData) {
                 $('.header').css('background-image', 'url(' + serverData.coverImageData + ')');
             } else {
