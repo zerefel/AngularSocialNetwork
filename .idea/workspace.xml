@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85caa351-a4d6-4647-8b9c-ecb03f85f583" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/friends.html" afterPath="$PROJECT_DIR$/app/templates/friends.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers/mainController.js" afterPath="$PROJECT_DIR$/app/js/controllers/mainController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/services/notificationService.js" afterPath="$PROJECT_DIR$/app/js/services/notificationService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers/postsController.js" afterPath="$PROJECT_DIR$/app/js/controllers/postsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/services/postsService.js" afterPath="$PROJECT_DIR$/app/js/services/postsService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers/profilesController.js" afterPath="$PROJECT_DIR$/app/js/controllers/profilesController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/styles.css" afterPath="$PROJECT_DIR$/app/css/styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/user-home.html" afterPath="$PROJECT_DIR$/app/templates/user-home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/user-wall.html" afterPath="$PROJECT_DIR$/app/templates/user-wall.html" />
+      <change type="DELETED" beforePath="C:\Users\ZerefeL\Dropbox\GitHub Repos\AngularSocialNetwork\TestSearch\example.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\ZerefeL\Dropbox\GitHub Repos\AngularSocialNetwork\TestSearch\index.html" afterPath="" />
     </list>
     <ignored path="AngularSocialNetwork.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -623,7 +616,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -837,22 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-27.115385" vertical-offset="43" max-vertical-offset="918">
           <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestSearch/example.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestSearch/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.26923" vertical-offset="0" max-vertical-offset="663">
-          <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
           <folding />
         </state>
       </provider>
