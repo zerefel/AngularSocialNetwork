@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top" ng-controller="AuthenticationsController" >
+<nav class="navbar navbar-default navbar-static-top" ng-controller="AuthenticationsController">
 
     <div class="container">
 
@@ -13,19 +13,25 @@
             <a class="navbar-brand" href="#/">Facebokluk</a>
         </div>
 
-        <div  class="navbar-collapse collapse" ng-if="!username">
+        <div class="navbar-collapse collapse" ng-if="!username">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#/login">Login</a></li>
                 <li><a href="#/register">Register</a></li>
             </ul>
         </div>
-        <div  class="navbar-collapse collapse" ng-if="username">
+
+
+
+        <div class="navbar-collapse collapse" ng-if="username">
             <div id="search-div" class="col-md-6" ng-controller="ProfilesController">
-                <input type="text" class="col-md-8" id="search-box" ng-model="searchUserName" ng-keyup="searchUserByName()" placeholder="Search Facebokluk">
+                <input type="text" class="col-md-8" id="search-box" ng-model="searchUserName"
+                       ng-keyup="searchUserByName()" placeholder="Search Facebokluk">
             </div>
 
             <ul class="nav navbar-nav navbar-right">
-                <li id="username-container"><a ng-href="#/user/{{ username }}" class="ng-cloak"><img id="profile-image-navbar" src="{{userProfileData.profileImageData}}">{{ userProfileData.name }}</a></li>
+                <li id="username-container"><a ng-href="#/user/{{ username }}" class="ng-cloak"><img
+                        id="profile-image-navbar" src="{{userProfileData.profileImageData}}">{{ userProfileData.name }}</a>
+                </li>
                 <li><a ng-href="#/user/{{ username }}/requests">Friend requests</a></li>
                 <li><a ng-href="#/user/{{ username }}/edit">Edit Profile</a></li>
                 <li><a ng-href="#/" ng-click="logout()">Logout</a></li>
@@ -35,15 +41,15 @@
     </div>
 </nav>
 
-
-
-
 <div id="search-results-data" class="col-md-offset-3" ng-if="true">
     <ul>
         <li ng-repeat="result in searchResults">
-            <img src="{{result.profileImageData}}" class="search-images" onError="this.onerror=null; this.src='./images/no-avatar.jpg';"/>
+            <img src="{{result.profileImageData}}" class="search-images"
+                 onError="this.onerror=null; this.src='./images/no-avatar.jpg';"/>
+
             <div class="search-names">
-                <a class="search-hrefs" href="#/user/{{result.username}}" data-id="{{result.username}}">{{result.name}}</a>
+                <a class="search-hrefs" href="#/user/{{result.username}}"
+                   data-id="{{result.username}}">{{result.name}}</a>
             </div>
         </li>
     </ul>

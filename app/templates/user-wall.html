@@ -36,7 +36,7 @@
                 </div>
                 <br/>
                 <div class="postDate" style="display: inline;">{{post.date | date }}</div>
-                <div class="postContent btn-info" style="margin: 5px; padding: 5px;">{{ post.postContent }}</div>
+                <div style="margin: 5px; padding: 5px; overflow: hidden">{{ post.postContent }}</div>
                 <div style="text-align: right;">
                     {{post.likesCount}}
                     <span class="btn likeButton btn-success" ng-if="!post.liked && isPostOwnerOrAuthorFriend(post)" ng-click="likePost(post.id)">Like</span>
@@ -69,7 +69,7 @@
                         </li>
                     </ul>
                     <div style="text-align: center;" ng-if="exceededCommentsCount(post.totalCommentsCount)">
-                        <a href="#/Post/{{post.id}}"><button class="btn btn-info" ng-click="showPostDetails(post.id)">More</button></a>
+                        <a href="#/post/{{post.id}}"><button class="btn btn-info" ng-click="showPostDetails(post.id)">More</button></a>
                     </div>
                 </div>
             </li>
