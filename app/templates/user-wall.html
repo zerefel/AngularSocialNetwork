@@ -1,6 +1,6 @@
 <div ng-include="'templates/nav-bar.html'"></div>
 
-<section>
+<section ng-show="contentLoaded">
     <div>
         <header class="header" id="header" ng-init="getWallOwnerData()" style=" height: 400px; margin-top: -20px; background-size: cover; background-position: center center;">
             <div class="image-container" id="userProfileImage">

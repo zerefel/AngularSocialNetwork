@@ -2,12 +2,12 @@
 1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
 1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'install',
-1 verbose cli   'angular-typhead' ]
+1 verbose cli   'ui.bootstrap' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.33
 4 verbose node symlink C:\Program Files\nodejs\\node.exe
-5 verbose cache add [ 'angular-typhead', null ]
-6 verbose cache add name=undefined spec="angular-typhead" args=["angular-typhead",null]
+5 verbose cache add [ 'ui.bootstrap', null ]
+6 verbose cache add name=undefined spec="ui.bootstrap" args=["ui.bootstrap",null]
 7 verbose parsed url { protocol: null,
 7 verbose parsed url   slashes: null,
 7 verbose parsed url   auth: null,
@@ -17,66 +17,66 @@
 7 verbose parsed url   hash: null,
 7 verbose parsed url   search: null,
 7 verbose parsed url   query: null,
-7 verbose parsed url   pathname: 'angular-typhead',
-7 verbose parsed url   path: 'angular-typhead',
-7 verbose parsed url   href: 'angular-typhead' }
-8 silly lockFile 21385c5b-angular-typhead angular-typhead
-9 verbose lock angular-typhead C:\Users\ZerefeL\AppData\Roaming\npm-cache\21385c5b-angular-typhead.lock
-10 silly lockFile 21385c5b-angular-typhead angular-typhead
-11 silly lockFile 21385c5b-angular-typhead angular-typhead
-12 verbose addNamed [ 'angular-typhead', '' ]
+7 verbose parsed url   pathname: 'ui.bootstrap',
+7 verbose parsed url   path: 'ui.bootstrap',
+7 verbose parsed url   href: 'ui.bootstrap' }
+8 silly lockFile be16e1e2-ui-bootstrap ui.bootstrap
+9 verbose lock ui.bootstrap C:\Users\ZerefeL\AppData\Roaming\npm-cache\be16e1e2-ui-bootstrap.lock
+10 silly lockFile be16e1e2-ui-bootstrap ui.bootstrap
+11 silly lockFile be16e1e2-ui-bootstrap ui.bootstrap
+12 verbose addNamed [ 'ui.bootstrap', '' ]
 13 verbose addNamed [ null, '*' ]
-14 silly lockFile 7660029a-angular-typhead angular-typhead@
-15 verbose lock angular-typhead@ C:\Users\ZerefeL\AppData\Roaming\npm-cache\7660029a-angular-typhead.lock
-16 silly addNameRange { name: 'angular-typhead', range: '*', hasData: false }
-17 verbose request where is /angular-typhead
+14 silly lockFile fe3dd927-ui-bootstrap ui.bootstrap@
+15 verbose lock ui.bootstrap@ C:\Users\ZerefeL\AppData\Roaming\npm-cache\fe3dd927-ui-bootstrap.lock
+16 silly addNameRange { name: 'ui.bootstrap', range: '*', hasData: false }
+17 verbose request where is /ui.bootstrap
 18 verbose request registry https://registry.npmjs.org/
-19 verbose request id 83230890aa51e4a8
-20 verbose url raw /angular-typhead
-21 verbose url resolving [ 'https://registry.npmjs.org/', './angular-typhead' ]
-22 verbose url resolved https://registry.npmjs.org/angular-typhead
-23 verbose request where is https://registry.npmjs.org/angular-typhead
-24 info trying registry request attempt 1 at 02:55:16
-25 http GET https://registry.npmjs.org/angular-typhead
-26 http 404 https://registry.npmjs.org/angular-typhead
+19 verbose request id a064a9c57a772c19
+20 verbose url raw /ui.bootstrap
+21 verbose url resolving [ 'https://registry.npmjs.org/', './ui.bootstrap' ]
+22 verbose url resolved https://registry.npmjs.org/ui.bootstrap
+23 verbose request where is https://registry.npmjs.org/ui.bootstrap
+24 info trying registry request attempt 1 at 13:15:58
+25 http GET https://registry.npmjs.org/ui.bootstrap
+26 http 404 https://registry.npmjs.org/ui.bootstrap
 27 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
 27 verbose headers   'content-type': 'application/json',
 27 verbose headers   'cache-control': 'max-age=0',
 27 verbose headers   'content-length': '51',
 27 verbose headers   'accept-ranges': 'bytes',
-27 verbose headers   date: 'Fri, 22 May 2015 23:55:16 GMT',
+27 verbose headers   date: 'Sat, 23 May 2015 10:15:59 GMT',
 27 verbose headers   via: '1.1 varnish',
 27 verbose headers   age: '0',
 27 verbose headers   connection: 'keep-alive',
-27 verbose headers   'x-served-by': 'cache-fra1236-FRA',
+27 verbose headers   'x-served-by': 'cache-lcy1129-LCY',
 27 verbose headers   'x-cache': 'MISS',
 27 verbose headers   'x-cache-hits': '0',
-27 verbose headers   'x-timer': 'S1432338916.442130,VS0,VE430' }
+27 verbose headers   'x-timer': 'S1432376159.349006,VS0,VE637' }
 28 silly registry.get cb [ 404,
 28 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
 28 silly registry.get     'content-type': 'application/json',
 28 silly registry.get     'cache-control': 'max-age=0',
 28 silly registry.get     'content-length': '51',
 28 silly registry.get     'accept-ranges': 'bytes',
-28 silly registry.get     date: 'Fri, 22 May 2015 23:55:16 GMT',
+28 silly registry.get     date: 'Sat, 23 May 2015 10:15:59 GMT',
 28 silly registry.get     via: '1.1 varnish',
 28 silly registry.get     age: '0',
 28 silly registry.get     connection: 'keep-alive',
-28 silly registry.get     'x-served-by': 'cache-fra1236-FRA',
+28 silly registry.get     'x-served-by': 'cache-lcy1129-LCY',
 28 silly registry.get     'x-cache': 'MISS',
 28 silly registry.get     'x-cache-hits': '0',
-28 silly registry.get     'x-timer': 'S1432338916.442130,VS0,VE430' } ]
-29 silly lockFile 7660029a-angular-typhead angular-typhead@
-30 silly lockFile 7660029a-angular-typhead angular-typhead@
-31 error 404 404 Not Found: angular-typhead
+28 silly registry.get     'x-timer': 'S1432376159.349006,VS0,VE637' } ]
+29 silly lockFile fe3dd927-ui-bootstrap ui.bootstrap@
+30 silly lockFile fe3dd927-ui-bootstrap ui.bootstrap@
+31 error 404 404 Not Found: ui.bootstrap
 31 error 404
-31 error 404 'angular-typhead' is not in the npm registry.
+31 error 404 'ui.bootstrap' is not in the npm registry.
 31 error 404 You should bug the author to publish it
 31 error 404
 31 error 404 Note that you can also install from a
 31 error 404 tarball, folder, or http url, or git url.
 32 error System Windows_NT 6.2.9200
-33 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "angular-typhead"
+33 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "ui.bootstrap"
 34 error cwd C:\Users\ZerefeL\Dropbox\GitHub Repos\AngularSocialNetwork
 35 error node -v v0.10.33
 36 error npm -v 1.4.28

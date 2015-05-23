@@ -13,9 +13,6 @@ SocialNetwork.factory('profilesService', function ($http, baseUrl, authenticatio
             });
     };
 
-
-
-
     service.getFriendRequests = function (success, error) {
         $http.get(serviceUrl + '/me/requests',
             {headers: authenticationService.GetHeaders()})

@@ -1,4 +1,4 @@
-var SocialNetwork = angular.module('SocialNetwork', ['ngMessages', 'ngRoute', 'ngStorage']);
+var SocialNetwork = angular.module('SocialNetwork', ['ngMessages', 'ngRoute', 'ngStorage', 'ui.bootstrap']);
 
 SocialNetwork.constant('baseUrl', 'http://softuni-social-network.azurewebsites.net/api');
 
@@ -25,9 +25,7 @@ SocialNetwork.config(function ($routeProvider) {
             controller: 'MainController'
         })
         .when('/user/:username', {
-            title: function (params) {
-                return params.username
-            },
+            title: 'Profile',
             templateUrl: 'templates/user-wall.html',
             controller: 'MainController'
         })
@@ -41,29 +39,14 @@ SocialNetwork.config(function ($routeProvider) {
             templateUrl: 'templates/friends-requests.html',
             controller: 'MainController'
         })
+        .when('/search', {
+            templateUrl: 'templates/search.html',
+            controller: 'MainController'
+        })
         .otherwise({
             redirectTo: '/'
         });
 });
-
-SocialNetwork.directive('compareTo', [function () {
-    return {
-        require: "ngModel",
-        scope: {
-            otherModelValue: "=compareTo"
-        },
-        link: function (scope, element, attributes, ngModel) {
-
-            ngModel.$validators.compareTo = function (modelValue) {
-                return modelValue == scope.otherModelValue;
-            };
-
-            scope.$watch("otherModelValue", function () {
-                ngModel.$validate();
-            });
-        }
-    };
-}]);
 
 SocialNetwork.run(['$location', '$rootScope', function ($location, $rootScope) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {

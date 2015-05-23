@@ -1,4 +1,4 @@
-SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, profilesService, $localStorage, $location, notificationService, authenticationService, $route, $routeParams) {
+SocialNetwork.controller('ProfilesController', function (baseUrl, $scope, $http, $rootScope, profilesService, $localStorage, $location, notificationService, authenticationService, $route, $routeParams) {
 
     $scope.setCurrentUser = function () {
         $scope.currentUser = $routeParams.id;
@@ -28,14 +28,14 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
         });
     };
 
-    $scope.searchUserByName = function () {
-        if ($scope.searchUserName) {
-            profilesService.getUsersByName($scope.searchUserName, function (serverData) {
-                $rootScope.searchResults = serverData;
-            }, function (error) {
-                notificationService.showError("Error loading users. " + error.message)
+
+    // TODO: Change this to use the promise from the service
+    $scope.searchUserByName = function (searchName) {
+        return $http.get(baseUrl + '/users/search?searchTerm=' + searchName,
+            {headers: authenticationService.GetHeaders()
+            }).then(function (response, status, headers, config) {
+                return response.data;
             });
-        }
     };
 
     $scope.setCurrentName = function () {
@@ -78,23 +78,24 @@ SocialNetwork.controller('ProfilesController', function ($scope, $rootScope, pro
         });
     };
 
+
     $scope.getOwnFriendsPreview = function () {
-        profilesService.getOwnFriendsPreview(function (serverData) {
-            $scope.ownFriendsPreview = serverData;
+        profilesService.getOwnFriendsPreview(function(serverData) {
+            $scope.friendsPreview = serverData;
         }, function (error) {
-            // poppy.pop('error', 'Error', 'There was an error getting the friends preview');
+            notificationService.showError("Error getting friends for preview." + error.message);
         });
     };
 
     $scope.getWallOwnerFriendsPreview = function () {
-        if ($routeParams.id === localStorage['username']) {
+        if ($routeParams.username == localStorage['username']) {
             $scope.getOwnFriendsPreview();
             return;
         }
-        profilesService.getUserFriendsPreview($routeParams.id, function (serverData) {
-            $scope.ownFriendsPreview = serverData;
+        profilesService.getUserFriendsPreview($routeParams.username, function (serverData) {
+            $scope.friendsPreview = serverData;
         }, function (error) {
-           notificationService.showError("Error getting friends preview. " + error.message);
+            notificationService.showError("Error getting friends preview. " + error.message);
         });
     };
 
