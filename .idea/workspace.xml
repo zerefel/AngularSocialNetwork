@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85caa351-a4d6-4647-8b9c-ecb03f85f583" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestSearch/example.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestSearch/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/AngularSocialNetwork.iml" afterPath="$PROJECT_DIR$/.idea/AngularSocialNetwork.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/images/default-cover-photo.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/friends.html" />
+      <change type="DELETED" beforePath="C:\Users\ZerefeL\Dropbox\GitHub Repos\AngularSocialNetwork\app\templates\search.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/application.js" afterPath="$PROJECT_DIR$/app/js/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/friends-requests.html" afterPath="$PROJECT_DIR$/app/templates/friends-requests.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers/mainController.js" afterPath="$PROJECT_DIR$/app/js/controllers/mainController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/nav-bar.html" afterPath="$PROJECT_DIR$/app/templates/nav-bar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="$PROJECT_DIR$/npm-debug.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/controllers/profilesController.js" afterPath="$PROJECT_DIR$/app/js/controllers/profilesController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/services/profilesService.js" afterPath="$PROJECT_DIR$/app/js/services/profilesService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/styles.css" afterPath="$PROJECT_DIR$/app/css/styles.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/user-home.html" afterPath="$PROJECT_DIR$/app/templates/user-home.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/user-wall.html" afterPath="$PROJECT_DIR$/app/templates/user-wall.html" />
@@ -42,22 +39,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/search.html">
+      <file leaf-file-name="friends-requests.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/friends-requests.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.538462" vertical-offset="0" max-vertical-offset="731">
-              <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestSearch/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.26923" vertical-offset="0" max-vertical-offset="663">
-              <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-              <folding />
+            <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="391">
+              <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#li#0;n#ul#0;n#section#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h3#0;n#a#0;n#li#0;n#ul#0;n#section#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,8 +55,8 @@
       <file leaf-file-name="profilesController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/controllers/profilesController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1254" max-vertical-offset="2142">
-              <caret line="118" column="11" selection-start-line="118" selection-start-column="11" selection-end-line="118" selection-end-column="11" />
+            <state vertical-scroll-proportion="-10.214286" vertical-offset="241" max-vertical-offset="2176">
+              <caret line="31" column="14" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -75,19 +65,43 @@
       <file leaf-file-name="mainController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/controllers/mainController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
-              <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377">
+              <caret line="14" column="53" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user-home.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/user-home.html">
+      <file leaf-file-name="authenticationsController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/controllers/authenticationsController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="1513">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1071">
+              <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="authenticationService.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/js/services/authenticationService.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.26415095" vertical-offset="527" max-vertical-offset="1428">
+              <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="friends.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/friends.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="680">
+              <caret line="2" column="68" selection-start-line="2" selection-start-column="68" selection-end-line="2" selection-end-column="68" />
+              <folding>
+                <element signature="n#style#0;n#li#0;n#ul#0;n#section#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#li#0;n#ul#0;n#section#1;n#section#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h3#0;n#a#1;n#div#0;n#li#0;n#ul#0;n#section#1;n#section#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -95,28 +109,18 @@
       <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/css/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1853" max-vertical-offset="2771">
-              <caret line="153" column="0" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2210" max-vertical-offset="3128">
+              <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/js/application.js">
+      <file leaf-file-name="registration.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/registration.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1020">
-              <caret line="48" column="3" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="newsFeed.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sad/Seems-Legit-Social-Network-master/app/templates/newsFeed.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.63085717" vertical-offset="298" max-vertical-offset="1173">
-              <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+            <state vertical-scroll-proportion="-22.884615" vertical-offset="748" max-vertical-offset="2244">
+              <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -125,8 +129,8 @@
       <file leaf-file-name="nav-bar.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/nav-bar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.115385" vertical-offset="107" max-vertical-offset="969">
-              <caret line="34" column="53" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
+            <state vertical-scroll-proportion="-20.076923" vertical-offset="90" max-vertical-offset="969">
+              <caret line="36" column="65" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -135,8 +139,8 @@
       <file leaf-file-name="user-wall.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/user-wall.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="12.423077" vertical-offset="357" max-vertical-offset="1649">
-              <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+            <state vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="1445">
+              <caret line="6" column="71" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -150,9 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/css/bootstrap.min.css" />
-        <option value="$PROJECT_DIR$/css/styles.css" />
-        <option value="$PROJECT_DIR$/templates/nav-bar.html" />
         <option value="$PROJECT_DIR$/templates/registration.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/app/css/bootstrap.min.css" />
@@ -185,22 +186,25 @@
         <option value="$PROJECT_DIR$/app/js/controllers/postsController.js" />
         <option value="$PROJECT_DIR$/app/js/services/postsService.js" />
         <option value="$PROJECT_DIR$/app/js/controllers/authenticationsController.js" />
-        <option value="$PROJECT_DIR$/app/templates/friends-requests.html" />
         <option value="$PROJECT_DIR$/app/templates/edit-profile.html" />
         <option value="$PROJECT_DIR$/app/js/services/profilesService.js" />
         <option value="$PROJECT_DIR$/app/js/controllers/testController.js" />
         <option value="$PROJECT_DIR$/TestSearch/example.js" />
         <option value="$PROJECT_DIR$/app/templates/search.html" />
-        <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/templates/login.html" />
         <option value="$PROJECT_DIR$/TestSearch/index.html" />
+        <option value="$PROJECT_DIR$/app/templates/typeahead-result/typeahead-results.js" />
+        <option value="$PROJECT_DIR$/app/templates/typeahead/typehead.html" />
+        <option value="$PROJECT_DIR$/app/templates/user-home.html" />
+        <option value="$PROJECT_DIR$/app/js/application.js" />
+        <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/js/controllers/profilesController.js" />
         <option value="$PROJECT_DIR$/app/js/controllers/mainController.js" />
-        <option value="$PROJECT_DIR$/app/templates/user-wall.html" />
         <option value="$PROJECT_DIR$/app/templates/nav-bar.html" />
         <option value="$PROJECT_DIR$/app/css/styles.css" />
-        <option value="$PROJECT_DIR$/app/js/application.js" />
-        <option value="$PROJECT_DIR$/app/js/controllers/profilesController.js" />
-        <option value="$PROJECT_DIR$/app/templates/user-home.html" />
+        <option value="$PROJECT_DIR$/app/templates/friends.html" />
+        <option value="$PROJECT_DIR$/app/templates/friends-requests.html" />
+        <option value="$PROJECT_DIR$/app/templates/user-wall.html" />
       </list>
     </option>
   </component>
@@ -310,32 +314,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sad" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Seems-Legit-Social-Network-master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AngularSocialNetwork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AngularSocialNetwork" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -373,6 +351,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularSocialNetwork" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularSocialNetwork" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -395,6 +395,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularSocialNetwork" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularSocialNetwork" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -441,14 +459,14 @@
       <recent name="C:\Users\ZerefeL\Dropbox\GitHub Repos\AngularSocialNetwork\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ZerefeL\Dropbox\GitHub Repos\AngularSocialNetwork\app\libraries" />
       <recent name="C:\Users\ZerefeL\Dropbox\GitHub Repos\AngularSocialNetwork\app\images" />
+      <recent name="C:\Users\ZerefeL\Dropbox\GitHub Repos\AngularSocialNetwork\app\libraries" />
       <recent name="C:\Users\ZerefeL\Dropbox\GitHub Repos\AngularSocialNetwork\sad" />
       <recent name="C:\Users\ZerefeL\Dropbox\GitHub Repos\AngularSocialNetwork\app\js\services" />
       <recent name="C:\Users\ZerefeL\Dropbox\GitHub Repos\AngularSocialNetwork\app\templates" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.index.html">
+  <component name="RunManager" selected="JavaScript Debug.index.html (2)">
     <configuration default="false" name="index.html (1)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/AngularSocialNetwork/app/index.html">
       <RunnerSettings RunnerId="JavascriptDebugRunner" />
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
@@ -512,9 +530,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.index.html (1)" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.index.html (2)" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html (2)" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.index.html (1)" />
         <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.user-home.html" />
         <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.nav-bar.html (1)" />
       </list>
@@ -753,6 +771,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
           <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -776,6 +795,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.392858" vertical-offset="457" max-vertical-offset="6647">
           <caret line="44" column="21" selection-start-line="44" selection-start-column="16" selection-end-line="44" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -793,36 +813,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/registration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.884615" vertical-offset="748" max-vertical-offset="2244">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers/authenticationsController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
-          <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/controllers/postsController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1706" max-vertical-offset="2975">
           <caret line="122" column="29" selection-start-line="122" selection-start-column="21" selection-end-line="122" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/friends-requests.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="306">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#li#0;n#ul#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#h3#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -853,14 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/services/authenticationService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1428">
-          <caret line="52" column="27" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/services/profilesService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1751">
@@ -873,14 +859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="204">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.5384617" vertical-offset="264" max-vertical-offset="1139">
-          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -909,74 +887,127 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/search.html">
+    <entry file="file://$PROJECT_DIR$/sad/Seems-Legit-Social-Network-master/app/templates/newsFeed.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.538462" vertical-offset="0" max-vertical-offset="731">
-          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+        <state vertical-scroll-proportion="-22.23077" vertical-offset="0" max-vertical-offset="1173">
+          <caret line="34" column="157" selection-start-line="34" selection-start-column="157" selection-end-line="34" selection-end-column="157" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers/mainController.js">
+    <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
-          <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/nav-bar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.115385" vertical-offset="107" max-vertical-offset="969">
-          <caret line="34" column="53" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1853" max-vertical-offset="2771">
-          <caret line="153" column="0" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1020">
-          <caret line="48" column="3" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/controllers/profilesController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1254" max-vertical-offset="2142">
-          <caret line="118" column="11" selection-start-line="118" selection-start-column="11" selection-end-line="118" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/user-wall.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="12.423077" vertical-offset="357" max-vertical-offset="1649">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+        <state vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="884">
+          <caret line="25" column="64" selection-start-line="25" selection-start-column="64" selection-end-line="25" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/user-home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="1513">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="1649">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sad/Seems-Legit-Social-Network-master/app/templates/newsFeed.html">
+    <entry file="file://$PROJECT_DIR$/app/js/controllers/profilesController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63085717" vertical-offset="298" max-vertical-offset="1173">
-          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+        <state vertical-scroll-proportion="-10.214286" vertical-offset="241" max-vertical-offset="2176">
+          <caret line="31" column="14" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/registration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.884615" vertical-offset="748" max-vertical-offset="2244">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/nav-bar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.076923" vertical-offset="90" max-vertical-offset="969">
+          <caret line="36" column="65" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2210" max-vertical-offset="3128">
+          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/friends.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="680">
+          <caret line="2" column="68" selection-start-line="2" selection-start-column="68" selection-end-line="2" selection-end-column="68" />
+          <folding>
+            <element signature="n#style#0;n#li#0;n#ul#0;n#section#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#li#0;n#ul#0;n#section#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h3#0;n#a#1;n#div#0;n#li#0;n#ul#0;n#section#1;n#section#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/friends-requests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="391">
+          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#li#0;n#ul#0;n#section#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h3#0;n#a#0;n#li#0;n#ul#0;n#section#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/user-wall.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="1445">
+          <caret line="6" column="71" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers/mainController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377">
+          <caret line="14" column="53" selection-start-line="14" selection-start-column="53" selection-end-line="14" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/controllers/authenticationsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1071">
+          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services/authenticationService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26415095" vertical-offset="527" max-vertical-offset="1428">
+          <caret line="45" column="35" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
           <folding />
         </state>
       </provider>

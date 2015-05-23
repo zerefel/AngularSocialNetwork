@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html ng-app="SocialNetwork">
-<head lang="en">
+<head>
     <meta charset="UTF-8">
     <title ng-bind="'Facebokluk - ' + title">Facebokluk</title>
-
     <!--LOAD FAVICON-->
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-
     <!--LOAD BOOTSTRAP STYLES-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!--LOAD FONT AWESOME STYLES-->
     <link href="css/font-awesome.min.css" rel="stylesheet"/>
-
-
     <!--LOAD THE MAIN STYLE FOR THE WEBSITE-->
     <link href="css/styles.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 
 <div ng-view>
-
 </div>
 
 <!--LIBRARIES-->
@@ -30,33 +25,23 @@
 <script src="libraries/angular/angular-messages.js"></script>
 <script src="libraries/angular-route/angular-route.js"></script>
 <script src="libraries/ngstorage/ngStorage.min.js"></script>
-<script src="libraries/angular-typeahead.min.js"></script>
 <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
-
-
 
 <!--CUSTOM SCRIPTS-->
 <script src="js/custom/UImodifiers.js"></script>
 <script src="js/application.js"></script>
+<script src="js/directives/fileSelect.js"></script>
 <script src="js/services/authenticationService.js"></script>
 <script src="js/services/notificationService.js"></script>
 <script src="js/services/postsService.js"></script>
 <script src="js/services/profilesService.js"></script>
+<script src="js/services/fileReader.js"></script>
 <script src="js/controllers/authenticationsController.js"></script>
 <script src="js/controllers/mainController.js"></script>
 <script src="js/controllers/postsController.js"></script>
 <script src="js/controllers/profilesController.js"></script>
 <script src="js/controllers/uploadCoverController.js"></script>
-
 <script src="js/controllers/uploadController.js"></script>
-
-<script src="js/services/fileReader.js"></script>
-<script src="js/directives/fileSelect.js"></script>
-
-
-
-<script src="js/controllers/testController.js"></script>
-
 
 </body>
 </html>

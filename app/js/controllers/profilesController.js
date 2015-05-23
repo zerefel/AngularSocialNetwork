@@ -1,7 +1,7 @@
 SocialNetwork.controller('ProfilesController', function (baseUrl, $scope, $http, $rootScope, profilesService, $localStorage, $location, notificationService, authenticationService, $route, $routeParams) {
 
     $scope.setCurrentUser = function () {
-        $scope.currentUser = $routeParams.id;
+        $scope.currentUser = $routeParams.username;
     };
 
     $scope.getUserData = function () {
@@ -65,6 +65,7 @@ SocialNetwork.controller('ProfilesController', function (baseUrl, $scope, $http,
     $scope.acceptFriendRequest = function (id) {
         profilesService.acceptFriendRequest(id, function (successData) {
             notificationService('Friend request accepted!');
+            $route.reload();
         }, function (error) {
             notificationService.showError('Error accepting friend request.' + error.message);
         });
@@ -73,6 +74,7 @@ SocialNetwork.controller('ProfilesController', function (baseUrl, $scope, $http,
     $scope.rejectFriendRequest = function (id) {
         profilesService.rejectFriendRequest(id, function (successData) {
             notificationService('Friend request rejected!');
+            $route.reload();
         }, function (error) {
             notificationService.showError('Error rejecting friend request.' + error.message);
         });

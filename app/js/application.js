@@ -39,8 +39,9 @@ SocialNetwork.config(function ($routeProvider) {
             templateUrl: 'templates/friends-requests.html',
             controller: 'MainController'
         })
-        .when('/search', {
-            templateUrl: 'templates/search.html',
+        .when('/:username/friends', {
+            title: 'Friends',
+            templateUrl: 'templates/friends.html',
             controller: 'MainController'
         })
         .otherwise({

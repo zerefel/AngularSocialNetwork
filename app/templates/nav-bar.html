@@ -26,7 +26,7 @@
                 <input type="text" ng-model="asyncSelected" placeholder="Search for users in this mess"
                        typeahead="user as user.name for user in searchUserByName($viewValue)"
                        class="form-control"
-                       typeahead-template-url="customTemplate.html"/>
+                       typeahead-template-url="typeahead-result.html"/>
 
             </div>
 
@@ -34,6 +34,7 @@
                 <li id="username-container"><a ng-href="#/user/{{ username }}" class="ng-cloak"><img
                         id="profile-image-navbar" ng-src="{{userProfileData.profileImageData}}">{{ userProfileData.name }}</a>
                 </li>
+                <li><a ng-href="#/{{ username }}/friends">Friends</a></li>
                 <li><a ng-href="#/user/{{ username }}/requests">Friend requests</a></li>
                 <li><a ng-href="#/user/{{ username }}/edit">Edit Profile</a></li>
                 <li><a ng-href="#/" ng-click="logout()">Logout</a></li>
@@ -43,8 +44,7 @@
     </div>
 </nav>
 
-
-<script type="text/ng-template" id="customTemplate.html">
+<script type="text/ng-template" id="typeahead-result.html">
     <a href="#/user/{{match.model.username}}">
         <img ng-src="{{match.model.profileImageData}}" width="50">
         <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
