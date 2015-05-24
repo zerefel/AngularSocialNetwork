@@ -1,4 +1,4 @@
-var SocialNetwork = angular.module('SocialNetwork', ['ngMessages', 'ngRoute', 'ngStorage', 'ui.bootstrap']);
+var SocialNetwork = angular.module('SocialNetwork', ['ngMessages', 'ngRoute', 'ngStorage', 'ui.bootstrap', 'infinite-scroll']);
 
 SocialNetwork.constant('baseUrl', 'http://softuni-social-network.azurewebsites.net/api');
 

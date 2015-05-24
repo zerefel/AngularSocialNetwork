@@ -13,6 +13,17 @@ SocialNetwork.factory('postsService', function ($http, baseUrl, authenticationSe
             });
     };
 
+    service.getMoreFromNewsFeed = function(startPostId, success, error) {
+        $http.get(serviceUrl + '/me/feed?StartPostId=' + startPostId + '&PageSize=5',
+            {headers: authenticationService.GetHeaders()})
+            .success(function (data, status, headers, config) {
+                success(data);
+            }).error(function (data) {
+                error(data);
+            });
+    };
+
+
     service.getWallPosts = function (user, success, error) {
         $http.get(serviceUrl + '/users/' + user + '/wall?StartPostId=&PageSize=5',
             {headers: authenticationService.GetHeaders()})

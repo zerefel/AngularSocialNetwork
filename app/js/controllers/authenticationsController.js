@@ -26,13 +26,12 @@ SocialNetwork.controller('AuthenticationsController', function ($scope, $rootSco
     };
 
     $scope.logout = function () {
-        console.log('called');
-        notificationService.showInfo("Successfully logged out!");
         ClearData();
         $rootScope.isLoggedIn = false;
         authenticationService.ClearCredentials();
         localStorage.removeItem('ngStorage-userProfileData');
         $route.reload();
+        notificationService.showInfo("Successfully logged out!");
     };
 
     $scope.register = function () {

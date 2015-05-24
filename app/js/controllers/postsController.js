@@ -3,12 +3,23 @@
  */
 SocialNetwork.controller('PostsController', function ($scope, postsService, $route, $routeParams, notificationService, authenticationService) {
 
+    $scope.newsFeedPostId = {newsFeedPostId: 0};
+
     $scope.getNewsFeed = function () {
         postsService.getNewsFeed(function (serverData) {
             $scope.newsFeed = serverData;
             $scope.contentLoaded = true;
         }, function (error) {
             notificationService.showError('Error loading news feed!' + error.message);
+        });
+    };
+
+    $scope.getMorePosts = function() {
+        var newsFeedPostId = $scope.newsFeedPostId.newsFeedPostId;
+        postsService.getMoreFromNewsFeed(newsFeedPostId, function(serverData) {
+            $scope.newsFeed = serverData;
+        }, function(error) {
+            notificationService.showError('Error loading more content for the news feed!' + error.message);
         });
     };
 
@@ -166,9 +177,5 @@ SocialNetwork.controller('PostsController', function ($scope, postsService, $rou
 
     $scope.isWallOwnerMe = function() {
         return $routeParams.username === authenticationService.GetUsername();
-    };
-
-    $scope.exceededCommentsCount = function (length) {
-        return length > 3;
     };
 });
