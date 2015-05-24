@@ -67,8 +67,8 @@
                 <div style="text-align: right;">
                     <span ng-if="post.likesCount != 1">{{post.likesCount}} people like this</span>
                     <span ng-if="post.likesCount == 1">{{post.likesCount}} person likes this</span>
-                    <span class="btn btn-success" ng-if="!post.liked && isWallOwnerFriend || !post.liked && isWallOwnerMe()" ng-click="likePost(post.id)">Like</span>
-                    <span class="btn btn-danger" ng-if="post.liked && isWallOwnerFriend || post.liked && isWallOwnerMe()" ng-click="unlikePost(post.id)">Unlike</span>
+                    <span class="btn btn-success" ng-if="!post.liked && isWallOwnerFriend || !post.liked && isWallOwnerMe() || !post.liked && isPostOwnerOrAuthorFriend(post)" ng-click="likePost(post.id)">Like</span>
+                    <span class="btn btn-danger" ng-if="post.liked && isWallOwnerFriend || post.liked && isWallOwnerMe() || post.liked && isPostOwnerOrAuthorFriend(post)" ng-click="unlikePost(post.id)">Unlike</span>
                     <span class="btn btn-default" ng-click="showUserComment(post.id)" ng-if="isWallOwnerFriend || isWallOwnerMe()">Comment</span>
                     <span class="btn btn-warning" ng-click="showComments(post.id)" ng-if="post.comments.length > 0 && post.comments.length != 1">{{post.comments.length}} Comments</span>
                     <span class="btn btn-warning" ng-click="showComments(post.id)" ng-if="post.comments.length == 1">{{post.comments.length}} Comment</span>
