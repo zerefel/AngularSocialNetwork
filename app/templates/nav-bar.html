@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top" ng-controller="ProfilesController" ng-init="getFriendRequests()" ng-controller="AuthenticationsController" >
+<nav class="navbar navbar-default navbar-static-top" ng-controller="ProfilesController" >
 
     <div class="container">
 
@@ -33,7 +33,7 @@
                        typeahead-template-url="typeahead-result.html"/>
             </div>
 
-            <ul class="nav navbar-nav navbar-right" class="col-md-6">
+            <ul class="nav navbar-nav navbar-right" class="col-md-6" ng-init="getFriendRequests()" ng-controller="AuthenticationsController">
                 <li id="username-container"><a ng-href="#/user/{{ username }}" class="ng-cloak"><img
                         id="profile-image-navbar" ng-src="{{userProfileData.profileImageData}}">{{ userProfileData.name }}</a>
                 </li>

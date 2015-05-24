@@ -47,10 +47,7 @@ SocialNetwork.config(function ($routeProvider) {
         .when('/user/:username/friends', {
             title: 'Friends',
             templateUrl: 'templates/friends.html',
-            controller: 'MainController',
-            resolve: {
-                factory: redirectGuestToHome()
-            }
+            controller: 'MainController'
         })
         .otherwise({
             redirectTo: '/'
@@ -61,26 +58,6 @@ SocialNetwork.run(['$location', '$rootScope', function ($location, $rootScope) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
     });
-
-    //localStorage.$watch(function () {
-    //    return $location.path();
-    //}, function (newValue, oldValue) {
-    //    //if ($scope.loggedIn == false && newValue != '/login') {
-    //    //    $location.path('/login');
-    //    //}
-    //});
 }]);
 
 
-function redirectGuestToHome() {
-    if (!sessionStorage['accessToken']) {
-        window.location('#/');
-    }
-}
-
-function loadUserHomePage() {
-    if (sessionStorage['accessToken']) {
-        var splitted = window.location.href.split('#');
-        window.location.replace(splitted[0] + '#/');
-    }
-}

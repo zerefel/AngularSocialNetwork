@@ -2,7 +2,7 @@ SocialNetwork.controller('MainController', function ($scope, $rootScope, $localS
 
     var path = $location.path();
     if ((path.indexOf("user") != -1) && !authenticationService.isLoggedIn()) {
-        $location.path('/');
+        $location.path('#/');
     }
 
     $scope.username = authenticationService.GetUsername();
