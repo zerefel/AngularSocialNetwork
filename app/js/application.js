@@ -47,7 +47,10 @@ SocialNetwork.config(function ($routeProvider) {
         .when('/user/:username/friends', {
             title: 'Friends',
             templateUrl: 'templates/friends.html',
-            controller: 'MainController'
+            controller: 'MainController',
+            resolve: {
+                factory: redirectGuestToHome()
+            }
         })
         .otherwise({
             redirectTo: '/'
@@ -69,10 +72,9 @@ SocialNetwork.run(['$location', '$rootScope', function ($location, $rootScope) {
 }]);
 
 
-function loadGuestHomePage() {
+function redirectGuestToHome() {
     if (!sessionStorage['accessToken']) {
-        var splitted = window.location.href.split('#');
-        window.location.replace(splitted[0] + '#/');
+        window.location('#/');
     }
 }
 

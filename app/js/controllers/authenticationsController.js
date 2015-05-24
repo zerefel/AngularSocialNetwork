@@ -52,7 +52,7 @@ SocialNetwork.controller('AuthenticationsController', function ($scope, $rootSco
             notificationService.showInfo("You have successfully changed your password.");
             $location.path('/user/home');
         }, function (error) {
-            notificationService.showError("Error changing your password.");
+            notificationService.showError("Error changing your password." + error.message);
         });
     }
 

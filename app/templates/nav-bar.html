@@ -1,14 +1,10 @@
-<nav class="navbar navbar-default navbar-static-top" ng-controller="AuthenticationsController">
+<nav class="navbar navbar-default navbar-static-top" ng-controller="ProfilesController" ng-init="getFriendRequests()" ng-controller="AuthenticationsController" >
 
     <div class="container">
 
-        <div class="navbar-header">
+        <div class="navbar-header" ng-if="!username">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                     aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#/">Facebokluk</a>
         </div>
@@ -21,8 +17,16 @@
         </div>
 
 
+
+        <div class="navbar-header" ng-if="username">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+            </button>
+            <a class="navbar-brand" href="#/user/home">Facebokluk</a>
+        </div>
+
         <div class="navbar-collapse collapse" ng-if="username">
-            <div id="search-div" class="col-md-5" ng-controller="ProfilesController">
+            <div id="search-div" class="col-md-4" ng-controller="ProfilesController">
                 <input type="text" ng-model="asyncSelected" placeholder="Search for users in this mess"
                        typeahead="user as user.name for user in searchUserByName($viewValue)"
                        class="form-control"
@@ -34,7 +38,7 @@
                         id="profile-image-navbar" ng-src="{{userProfileData.profileImageData}}">{{ userProfileData.name }}</a>
                 </li>
                 <li><a ng-href="#/user/{{ username }}/friends">Friends</a></li>
-                <li><a ng-href="#/user/{{ username }}/requests">Friend requests</a></li>
+                <li><a ng-href="#/user/{{ username }}/requests">Friend requests<span style="color: red" ng-if="friendRequests != 0">({{friendRequests.length}})</span></a></li>
                 <li><a ng-href="#/user/{{ username }}/edit">Edit Profile</a></li>
                 <li><a ng-href="#/" ng-click="logout()">Logout</a></li>
             </ul>
@@ -44,8 +48,10 @@
 </nav>
 
 <script type="text/ng-template" id="typeahead-result.html">
-    <a href="#/user/{{match.model.username}}">
-        <img ng-src="{{match.model.profileImageData}}" width="50">
-        <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+    <a style="width: 350px;" href="#/user/{{match.model.username}}">
+        <img ng-src="{{match.model.profileImageData}}" width="70">
+        <span style="font-size: 19px;" bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
     </a>
 </script>
+
+

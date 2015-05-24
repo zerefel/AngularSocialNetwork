@@ -28,7 +28,6 @@ SocialNetwork.controller('ProfilesController', function (baseUrl, $scope, $http,
         });
     };
 
-
     // TODO: Change this to use the promise from the service
     $scope.searchUserByName = function (searchName) {
         return $http.get(baseUrl + '/users/search?searchTerm=' + searchName,

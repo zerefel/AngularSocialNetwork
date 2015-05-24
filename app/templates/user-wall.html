@@ -83,7 +83,7 @@
                 </div>
                 <div id="comments-{{post.id}}" style="display: none;">
                     <ul>
-                        <li ng-repeat="comment in post.comments" ng-init="setHoverEvents()">
+                        <li ng-repeat="comment in post.comments">
                             <img src="{{comment.author.profileImageData}}" alt=""/>
                             <div style="display: inline;">
                                 <a href="#/user/{{comment.author.username}}" data-id="{{comment.author.username}}">{{ comment.author.name }}</a>

@@ -14,7 +14,6 @@ SocialNetwork.controller('MainController', function ($scope, $rootScope, $localS
         return $routeParams.username === authenticationService.GetUsername();
     };
 
-
     $scope.getWallOwnerData = function () {
         authenticationService.GetProfileDataForSpecificUser($routeParams.username, function(serverData) {
             $scope.wallOwner = serverData;
