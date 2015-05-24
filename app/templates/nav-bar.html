@@ -33,7 +33,7 @@
                 <li id="username-container"><a ng-href="#/user/{{ username }}" class="ng-cloak"><img
                         id="profile-image-navbar" ng-src="{{userProfileData.profileImageData}}">{{ userProfileData.name }}</a>
                 </li>
-                <li><a ng-href="#/{{ username }}/friends">Friends</a></li>
+                <li><a ng-href="#/user/{{ username }}/friends">Friends</a></li>
                 <li><a ng-href="#/user/{{ username }}/requests">Friend requests</a></li>
                 <li><a ng-href="#/user/{{ username }}/edit">Edit Profile</a></li>
                 <li><a ng-href="#/" ng-click="logout()">Logout</a></li>

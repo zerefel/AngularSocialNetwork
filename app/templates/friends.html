@@ -1,19 +1,19 @@
 <div ng-include="'templates/nav-bar.html'"></div>
 
-<section ng-controller="ProfilesController" ng-show="friendsPreview">
+<section ng-controller="ProfilesController" ng-show="friendsDetails">
     <section class="row col-md-6 col-md-offset-3">
         <label id="friends-filter-label" class="col-md-offset-3 pull-left" for="name-filter">Find friends by
             name: </label>
         <input class="row col-md-6 pull-right" id="name-filter" type="text" ng-model="searchName" placeholder="Enter name">
     </section>
 
-    <section class="row panel col-md-6 col-md-offset-3" ng-init="getOwnFriendsPreview()" style="padding-bottom: 20px;">
-        <h2>You have a total of {{ friendsPreview.totalCount }} friends.</h2>
+    <section class="row panel col-md-6 col-md-offset-3" ng-init="getWallOwnerFriendsDetails()" style="padding-bottom: 20px;">
+        <h2>Showing all friends ({{ friendsDetails.length }}).</h2>
         <ul>
-            <li ng-repeat="friend in friendsPreview.friends | filter:searchName" style="margin-bottom: 10px;">
+            <li ng-repeat="friend in friendsDetails | filter:searchName" class="col-md-6" style="margin-bottom: 10px;">
                 <div ng-class-even="'even'" ng-class-odd="'odd'">
-                    <a href="#/user/{{friend.username}}"><img src="{{friend.profileImageData}}" style="width: 120px; height:120px"/></a>
-                    <a href="#/user/{{friend.username}}"><h3 style="display: inline;">{{friend.name}}</h3></a>
+                    <a href="#/user/{{friend.username}}"><img src="{{friend.profileImageData}}" style="width: 120px; height:120px; border: 1px solid lightgrey;"/></a>
+                    <a href="#/user/{{friend.username}}"><h4 style="display: inline; overflow: hidden;">{{friend.name}}</h4></a>
                 </div>
             </li>
         </ul>

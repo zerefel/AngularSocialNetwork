@@ -32,7 +32,7 @@
     <div class="row col-md-3 pull-right" style="margin-right: 100px;" ng-controller="ProfilesController" ng-init="getWallOwnerFriendsPreview()" ng-show="friendsPreview">
         <h2 style="display: inline;">Friends</h2>
         <section class="panel col-md-12 col-md-offset-0" >
-            <h5>This user has {{ friendsPreview.totalCount }} friends.</h5>
+            <a href="#/user/{{wallOwner.username}}/friends"><h5>This user has {{ friendsPreview.totalCount }} friends.</h5></a>
             <ul>
                 <li ng-repeat="friend in friendsPreview.friends | limitTo:6" class="pull-left" style="margin-bottom: 10px; width:100%">
                     <div style="margin-left: -50px;">
@@ -42,7 +42,7 @@
                 </li>
             </ul>
             <section>
-                <h5 ng-show="friendsPreview == false">You must have this user in friends to view his friends.</h5>
+                <h5 ng-show="!friendsPreview">You must have this user in friends to view his friends.</h5>
             </section>
         </section>
     </div>
@@ -99,9 +99,6 @@
                             </div>
                         </li>
                     </ul>
-                    <div style="text-align: center;" ng-if="exceededCommentsCount(post.totalCommentsCount)">
-                        <a href="#/post/{{post.id}}"><button class="btn btn-info" ng-click="showPostDetails(post.id)">More</button></a>
-                    </div>
                 </div>
             </li>
         </ul>

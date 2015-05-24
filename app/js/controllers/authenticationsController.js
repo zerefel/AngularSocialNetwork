@@ -15,9 +15,9 @@ SocialNetwork.controller('AuthenticationsController', function ($scope, $rootSco
 
                 authenticationService.GetUserProfileData(function (successData) {
                     authenticationService.setProfilePicture(successData.profileImageData);
-                    $location.path('/user/home');
                     $rootScope.userProfileData = successData;
                     $localStorage.userProfileData = successData;
+                    $location.path('/user/home');
                     ClearData();
                 });
             }, function (serverError) {
@@ -26,11 +26,12 @@ SocialNetwork.controller('AuthenticationsController', function ($scope, $rootSco
     };
 
     $scope.logout = function () {
+        console.log('called');
         notificationService.showInfo("Successfully logged out!");
         ClearData();
         $rootScope.isLoggedIn = false;
         authenticationService.ClearCredentials();
-        $localStorage.clear();
+        localStorage.removeItem('ngStorage-userProfileData');
         $route.reload();
     };
 

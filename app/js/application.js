@@ -39,11 +39,15 @@ SocialNetwork.config(function ($routeProvider) {
             templateUrl: 'templates/friends-requests.html',
             controller: 'MainController'
         })
-        .when('/:username/friends', {
+        .when('/user/:username/friends', {
             title: 'Friends',
             templateUrl: 'templates/friends.html',
-            controller: 'MainController',
-            loginRequired: true
+            controller: 'MainController'
+        })
+        .when('/user/:username/friends', {
+            title: 'Friends',
+            templateUrl: 'templates/friends.html',
+            controller: 'MainController'
         })
         .otherwise({
             redirectTo: '/'
@@ -54,16 +58,21 @@ SocialNetwork.run(['$location', '$rootScope', function ($location, $rootScope) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
     });
+
+    //localStorage.$watch(function () {
+    //    return $location.path();
+    //}, function (newValue, oldValue) {
+    //    //if ($scope.loggedIn == false && newValue != '/login') {
+    //    //    $location.path('/login');
+    //    //}
+    //});
 }]);
 
 
-
-function redirectToHomeIfNotLogged() {
-    if (!localStorage['sessionToken']) {
+function loadGuestHomePage() {
+    if (!sessionStorage['accessToken']) {
         var splitted = window.location.href.split('#');
         window.location.replace(splitted[0] + '#/');
-
-        poppy.pop('error', 'Error', 'You must be logged in to access this page');
     }
 }
 
