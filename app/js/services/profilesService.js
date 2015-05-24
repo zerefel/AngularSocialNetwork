@@ -44,8 +44,8 @@ SocialNetwork.factory('profilesService', function ($http, baseUrl, authenticatio
     };
 
     service.rejectFriendRequest = function (id, success, error) {
-        $http.put(serviceUrl + '/me/requests/' + id + '?status=delete', {},
-            {headers: tauthenticationService.GetHeaders()})
+        $http.put(serviceUrl + '/me/requests/' + id + '?status=rejected', {},
+            {headers: authenticationService.GetHeaders()})
             .success(function (data, status, headers, config) {
                 success(data);
             }).error(function (data) {

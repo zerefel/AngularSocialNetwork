@@ -12,7 +12,7 @@
 
             <div class="col-md-1 col-md-offset-0" style="margin-top: -100px; " >
                 <span class="btn btn-success" ng-controller="ProfilesController" ng-if="!hasPendingFriendRequest && !isWallOwnerFriend && !isWallOwnerMe()" ng-click="sendFriendRequest()">Send friend request</span>
-                <span class="btn btn-info" ng-if="hasPendingFriendRequest">Friend request pending approval</span>
+                <span class="btn btn-info" ng-if="hasPendingFriendRequest && !isWallOwnerMe()">Friend request pending approval</span>
                 <span class="btn btn-primary" ng-if="isWallOwnerFriend">Friends</span>
             </div>
 
@@ -29,7 +29,7 @@
     </div>
 
 
-    <div class="row col-md-3 pull-right" style="margin-right: 100px;" ng-controller="ProfilesController" ng-init="getWallOwnerFriendsPreview()" ng-show="friendsPreview">
+    <div class="repeat-item row col-md-3 pull-right" style="margin-right: 100px;" ng-controller="ProfilesController" ng-init="getWallOwnerFriendsPreview()" ng-show="friendsPreview">
         <h2 style="display: inline;">Friends</h2>
         <section class="panel col-md-12 col-md-offset-0" >
             <a href="#/user/{{wallOwner.username}}/friends"><h5>This user has {{ friendsPreview.totalCount }} friends.</h5></a>
@@ -50,7 +50,7 @@
 
     <div class="main row col-md-offset-2 col-md-6" ng-controller="PostsController" ng-init="getWallOwnerPosts()" style="display: inline;">
         <ul>
-            <li ng-repeat="post in wallPosts" class="post-list-element col-md-12 btn-default post">
+            <li ng-repeat="post in wallPosts" class="repeat-item post-list-element col-md-12 btn-default post">
                 <div class="pull-right">
                     <button class="btn btn-warning" ng-if="isDeletablePost(post)" ng-click="deletePost(post.id)">Delete</button>
                 </div>

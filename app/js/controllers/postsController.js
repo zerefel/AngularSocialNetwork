@@ -4,6 +4,7 @@
 SocialNetwork.controller('PostsController', function ($scope, postsService, $route, $routeParams, notificationService, authenticationService) {
 
     $scope.newsFeedPostId = {newsFeedPostId: 0};
+    $scope.wallPostId = {wallPostId: 0};
 
     $scope.getNewsFeed = function () {
         postsService.getNewsFeed(function (serverData) {
@@ -15,12 +16,25 @@ SocialNetwork.controller('PostsController', function ($scope, postsService, $rou
     };
 
     $scope.getMorePosts = function() {
-        var newsFeedPostId = $scope.newsFeedPostId.newsFeedPostId;
-        postsService.getMoreFromNewsFeed(newsFeedPostId, function(serverData) {
-            $scope.newsFeed = serverData;
-        }, function(error) {
-            notificationService.showError('Error loading more content for the news feed!' + error.message);
-        });
+        if(newsFeedPostId != $scope.newsFeedPostId.newsFeedPostId) {
+            var newsFeedPostId = $scope.newsFeedPostId.newsFeedPostId;
+            postsService.getMoreFromNewsFeed(newsFeedPostId, function(serverData) {
+                $scope.newsFeed = serverData;
+            }, function(error) {
+                notificationService.showError('Error loading more content for the news feed!' + error.message);
+            });
+        }
+    };
+
+    $scope.getMoreProfilePosts = function() {
+        if(wallPostId != $scope.wallPostId.wallPostId) {
+            var profilePostsPostId = $scope.wallPostId.wallPostId;
+            postsService.getMoreFromNewsFeed(profilePostsPostId, function(serverData) {
+                $scope.newsFeed = serverData;
+            }, function(error) {
+                notificationService.showError('Error loading more content for the news feed!' + error.message);
+            });
+        }
     };
 
     $scope.getWallOwnerPosts = function () {
