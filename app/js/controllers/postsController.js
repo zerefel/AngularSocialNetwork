@@ -26,16 +26,18 @@ SocialNetwork.controller('PostsController', function ($scope, postsService, $rou
         }
     };
 
-    $scope.getMoreProfilePosts = function() {
-        if(wallPostId != $scope.wallPostId.wallPostId) {
-            var profilePostsPostId = $scope.wallPostId.wallPostId;
-            postsService.getMoreFromNewsFeed(profilePostsPostId, function(serverData) {
-                $scope.newsFeed = serverData;
-            }, function(error) {
-                notificationService.showError('Error loading more content for the news feed!' + error.message);
-            });
-        }
-    };
+    // TODO: Finish user wall pagination
+    //$scope.getMoreProfilePosts = function() {
+    //    if(profilePostsPostId != $scope.wallPostId.wallPostId) {
+    //        console.log($scope.wallPostId.wallPostId);
+    //        var profilePostsPostId = $scope.wallPostId.wallPostId;
+    //        postsService.getMoreFromWallPosts($routeParams.username, profilePostsPostId, function(serverData) {
+    //            $scope.wallPosts = serverData;
+    //        }, function(error) {
+    //            notificationService.showError('Error loading more content for the news feed!' + error.message);
+    //        });
+    //    }
+    //};
 
     $scope.getWallOwnerPosts = function () {
         postsService.getWallPosts($routeParams.username, function (serverData) {

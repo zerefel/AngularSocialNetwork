@@ -24,6 +24,18 @@ SocialNetwork.factory('postsService', function ($http, baseUrl, authenticationSe
     };
 
 
+    // TODO: Finish user wall pagination
+    //service.getMoreFromWallPosts = function(user, startPostId, succes, error) {
+    //    $http.get(serviceUrl + '/users/' + user + '/wall?StartPostId=' + startPostId + '&PageSize=5',
+    //        {headers: authenticationService.GetHeaders()})
+    //        .success(function (data, status, headers, config) {
+    //            success(data);
+    //        }).error(function (data) {
+    //            error(data);
+    //        });
+    //};
+
+
     service.getWallPosts = function (user, success, error) {
         $http.get(serviceUrl + '/users/' + user + '/wall?StartPostId=&PageSize=5',
             {headers: authenticationService.GetHeaders()})

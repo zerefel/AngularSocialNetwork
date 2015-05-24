@@ -73,6 +73,7 @@
                                     <span ng-if="comment.likesCount == 1">{{comment.likesCount}} person likes this</span>
                                     <span class="likeButton btn btn-danger" ng-if="comment.liked" ng-click="unlikeComment(post.id, comment.id)">Unlike</span>
                                     <span class="likeButton btn btn-success" ng-if="!comment.liked" ng-click="likeComment(post.id, comment.id)">Like</span>
+                                    <button class="btn btn-danger" ng-if="isDeletableComment(comment.author, post.author)" ng-click="deleteComment(post.id, comment.id)">Delete</button>
                                 </div>
                             </section>
                         </li>
